@@ -53,8 +53,7 @@ export default function LandingPage() {
             <div className="w-3/5 text-black">
               <h1 className="text-3xl">Мэргэжлийн механик</h1>
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam
-                temporibus voluptate vel, explicabo placeat error a!
+                Lorem ipsum dolor
               </p>
             </div>
           </div>
