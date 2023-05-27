@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+#certicate{
+  color: pink;
+}
+#newsSection {
+  background-image: url("../imgs/erch.jpg");
+  height: 80vh;
+  background-size: cover;
+}
+#balance {
+  background-image: url("https://static2.bigstockphoto.com/5/7/5/large2/57553274.jpg");
+}
+#wheel-alignment{
+  background-image: url("https://scontent.fuln5-1.fna.fbcdn.net/v/t39.30808-6/305573669_120792367401664_8852680473864456631_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=muo3R3JhxAUAX_FDclw&_nc_ht=scontent.fuln5-1.fna&oh=00_AfAXRU89Jy8huRLn5dhuLvvPLPoJgUnwGrfAOw3A8zhrGg&oe=6476638D");
+  background-size: cover;
+}
+#smart-diognasis{
+  background-image: url("https://scontent.fuln5-1.fna.fbcdn.net/v/t39.30808-6/329979503_891727842152793_3008032787834741143_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=4ZpNfMKbGK4AX_mvMjI&_nc_ht=scontent.fuln5-1.fna&oh=00_AfAJceQJbv1i6zifA5szJCSs929upJ8gxKsVOwEvpA1_Nw&oe=64760BED");
+  background-size: cover;
+}
+#computer-diognasis{
+  background-image: url("https://static2.bigstockphoto.com/5/7/5/large2/57553274.jpg");
+}
+#agregat{
+  background-image: url("https://static2.bigstockphoto.com/5/7/5/large2/57553274.jpg");
+}
+#oil-change{
+  background-image: url("https://static2.bigstockphoto.com/5/7/5/large2/57553274.jpg");
+}
+#CRDI {
+  background-image: url("https://static2.bigstockphoto.com/5/7/5/large2/57553274.jpg");
+}
+h1 {
+  font-size: 30px;
+}
+#intro2 {
+  background-image: url("https://images.barewalls.com/comp/art-print-poster/bwc9454947/machanic-repairman-at-automobile-car-engine-repair.jpg?ph=&pw=&print_border=&fit=&flip=&stretch_to_fit=&print_colorfilter=&bits=&side_style=&units=in&frame_id=&frame_type=&show_banner=false&artist_attr_name=false&artist_attr_show=false&artist_attr_title=false&custom_x_pct=&custom_y_pct=&custom_w_pct=&custom_h_pct=&bleed_size=&is_custom=false&can_edit_frame=true&object_width=18.0&object_height=12.0&fit_select=False&internal_sku=");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
