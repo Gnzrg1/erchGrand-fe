@@ -6,20 +6,20 @@ export const Section2 = () => {
   return (
     <div className="w-full flex flex-col justify-between ">
       <div className="bg-gradient-to-r px-12 from-gray-900 to-gray-500 z-0 w-full flex flex-col gap-8">
-        <h1 className="text-5xl">Service & Repair</h1>
+        <h1 className="text-4xl" style={{color:"white"}}>Засвар үйлчилгээ</h1>
         <div className="w-full bg-gradient-to-r px-8 from-gray-900 to-gray-500 z-0  flex items-end justify-start">
           <div className="flex w-1/6 justify-between">
             <button
               onClick={() => setShow(false)}
               className="w-2/4 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
             >
-              Button1
+              Онцлох
             </button>
             <button
               onClick={() => setShow(true)}
               className="w-2/4 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
             >
-              Button2
+              Бусад
             </button>
           </div>
         </div>

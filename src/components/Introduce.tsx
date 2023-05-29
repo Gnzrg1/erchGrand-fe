@@ -10,7 +10,7 @@ export const Introduce = () => {
         style={{ backgroundColor: "grey", padding: "32px 16px 32px 16px" }}
       >
         <h1>Erch is the Best</h1>
-        <h1 style={{ color: "black" }}>car Repair shop</h1>
+        <h1 style={{ color: "white" }}>car Repair shop</h1>
         <p>
           Have you encountered a body shop which just took your money but did
           not really bring any good value to your car? Are you looking for an
@@ -25,7 +25,7 @@ export const Introduce = () => {
           <div className="w-2/4 flex gap-3">
             <TbCircleNumber1 style={{ fontSize: "60px" }} />
             <div>
-              <div style={{ fontSize: "20px", color: "black" }}>
+              <div style={{ fontSize: "20px", color: "white" }}>
                 Book Appointment
               </div>
               <div>
@@ -37,7 +37,7 @@ export const Introduce = () => {
           <div className="w-2/4 flex gap-3">
             <TbCircleNumber2 style={{ fontSize: "60px" }} />
             <div>
-              <div style={{ fontSize: "20px", color: "black" }}>
+              <div style={{ fontSize: "20px", color: "white" }}>
                 Book Appointment
               </div>
               <div>
@@ -48,8 +48,8 @@ export const Introduce = () => {
           </div>
         </div>
       </div>
-      <div className="w-2/4" style={{ backgroundColor: "black" }} id="intro2">
-        <div style={{ fontSize: "35px", color: "black" }}>
+      <div className="w-2/4" style={{ backgroundColor: "white", padding:"32px 64px 32px 64px" }} id="intro2">
+        <div style={{ fontSize: "35px", color: "white" }}>
           <strong>Excellence in Automotive Services Since 2009</strong>
         </div>
       </div>

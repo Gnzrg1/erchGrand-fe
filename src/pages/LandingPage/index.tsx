@@ -7,6 +7,8 @@ import { AiFillLike } from "react-icons/ai";
 import { BsShieldFillCheck } from "react-icons/bs";
 import { Section2 } from "@/components/Section2";
 import { OurTeam } from "@/components/OurTeam";
+import { Logos } from "@/components/Logos";
+import { Introduce } from "@/components/Introduce";
 export default function LandingPage() {
   return (
     <div className="static top-0 w-full flex flex-col">
@@ -100,6 +102,8 @@ export default function LandingPage() {
       </div>
       <Section2 />
       <OurTeam />
+      <Logos/>
+      <Introduce/>
     </div>
   );
 }
