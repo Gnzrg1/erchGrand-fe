@@ -4,7 +4,7 @@ import { TbCircleNumber1, TbCircleNumber2 } from "react-icons/tb";
 
 export const Introduce = () => {
   return (
-    <div className="w-100 h-96 flex">
+    <div className="w-100 pb-8 bg-white flex">
       <div
         className="w-2/4"
         style={{ backgroundColor: "grey", padding: "32px 16px 32px 16px" }}
