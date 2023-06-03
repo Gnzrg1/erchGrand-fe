@@ -47,7 +47,7 @@ export const Header = () => {
         </div>
         <div className="w-4/5 px-8 hidden md:flex">
           <nav className="w-full">
-            <ul className="flex items-center justify-evenly text-md-regular">
+            <ul className="flex items-center justify-evenly text-md-regular"> 
               <li className="hover:text-white/70 duration-300">
                 <Link href="/">Нүүр</Link>
               </li>
