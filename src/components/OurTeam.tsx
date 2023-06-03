@@ -12,59 +12,28 @@ export const OurTeam = () => {
       .then((res) => setData(res.data.result));
   };
   return (
-    <div className="w-full bg-white flex flex-col gap-8 italic">
-      <h1 className="text-black text-center text-6xl">Our Team</h1>
+    <div className="w-full bg-white flex flex-col gap-8">
+      <h2 className="text-black text-center text-6xl"><strong>Хамт Олон</strong></h2>
       <div className="w-full bg-white flex justify-around">
-        <div className="w-1/4 ">
-          {data.map((e, index) => {
-            return <h1 key={index}>{e.name}</h1>;
-          })}
-          <div>
-            <Image
-              className="border-1"
-              src={erchLogo}
-              alt=""
-              width={250}
-              height={200}
-            />
+        <div className="w-1/4 flex justify-center">
+          <div id="ourTeam1" className="flex items-end">
+            <h1>Шижир</h1>
           </div>
-          <h1></h1>
         </div>
-        <div className="w-1/4 ">
-          <div>
-            <Image
-              className="border-1"
-              src={erchLogo}
-              alt=""
-              width={250}
-              height={200}
-            />
+        <div className="w-1/4 flex justify-center">
+          <div id="ourTeam2" className="flex items-end">
+            <h1>Сайнбилэг</h1>
           </div>
-          <h1></h1>
         </div>
-        <div className="w-1/4 ">
-          <div>
-            <Image
-              className="border-1"
-              src={erchLogo}
-              alt=""
-              width={250}
-              height={200}
-            />
+        <div className="w-1/4 flex justify-center">
+          <div id="ourTeam3" className="flex items-end">
+            <h1>Баянмөнх</h1>
           </div>
-          <h1></h1>
         </div>
-        <div className="w-1/4 ">
-          <div>
-            <Image
-              className="border-1"
-              src={erchLogo}
-              alt=""
-              width={250}
-              height={200}
-            />
+        <div className="w-1/4 flex justify-center">
+          <div id="ourTeam4" className="flex items-end">
+            <h1>Батхишиг</h1>
           </div>
-          <h1></h1>
         </div>
       </div>
     </div>

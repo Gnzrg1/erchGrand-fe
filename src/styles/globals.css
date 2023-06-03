@@ -60,7 +60,31 @@ h1 {
   font-size: 30px;
 }
 #intro2 {
-  background-image: url("https://images.barewalls.com/comp/art-print-poster/bwc9454947/machanic-repairman-at-automobile-car-engine-repair.jpg?ph=&pw=&print_border=&fit=&flip=&stretch_to_fit=&print_colorfilter=&bits=&side_style=&units=in&frame_id=&frame_type=&show_banner=false&artist_attr_name=false&artist_attr_show=false&artist_attr_title=false&custom_x_pct=&custom_y_pct=&custom_w_pct=&custom_h_pct=&bleed_size=&is_custom=false&can_edit_frame=true&object_width=18.0&object_height=12.0&fit_select=False&internal_sku=");
+  background-image: url("https://wallpaperaccess.com/full/2492509.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
+}
+#ourTeam1 {
+  background-image: url("https://th.bing.com/th/id/OIP.3Ex90_YK84_Cx1lz6FJn-wHaE8?pid=ImgDet&rs=1");
+  width:300px;
+  height: 200px;
+  background-size: cover;
+}
+#ourTeam2 {
+  background-image: url("https://thumbs.dreamstime.com/b/male-car-mechanic-portrait-studio-shot-44614664.jpg ");
+  width:300px;
+  height: 200px;
+  background-size: cover;
+}
+#ourTeam3 {
+  background-image: url("https://static1.bigstockphoto.com/8/7/8/large1500/87855800.jpg ");
+  width:300px;
+  height: 200px;
+  background-size: cover;
+}
+#ourTeam4 {
+  background-image: url("https://thumbs.dreamstime.com/z/portrait-male-mechanic-near-car-service-center-portrait-male-mechanic-near-car-service-center-150045344.jpg ");
+  width:300px;
+  height: 200px;
   background-size: cover;
 }
