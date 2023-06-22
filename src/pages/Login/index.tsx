@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import  {IoMdArrowBack}  from "react-icons/io"
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
@@ -26,42 +27,46 @@ export default function Index() {
   console.log(userData);
 
   return (
-    <div className="w-full h-full bg-white p-8">
-      <div className=" flex items-center flex-col gap-3">
-        <h1 className="text-3xl text-teal-500">Нэвтрэх</h1>
+    <div className="bg-black">
+      <Link href="/LandingPage">
+        <IoMdArrowBack className="text-white text-[2rem]"/>
+      </Link>
+    <div className="w-[100vw] h-[100vh] flex justify-center items-start bg-black p-4">
+      <div className="w-full flex items-center flex-col gap-6">
+        <h1 className="text-3xl text-white">Нэвтрэх</h1>
         <input
           //   onChange={(e) => setLogEmail(e.target.value)}
-          className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg block w-full sm:2/3 md:w-2/4 lg:w-1/3 p-2.5 active:border-sky-400"
           placeholder="Email"
           onChange={(e) => setEmailVal(e.target.value)}
         />
         <input
           //   onChange={(e) => setLogPassword(e.target.value)}
-          className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg block w-full sm:2/3 md:w-2/4 lg:w-1/3 p-2.5 active:border-sky-400"
           placeholder="Password"
           type="password"
           onChange={(e) => setPassVal(e.target.value)}
         />
         <Link
-          className="text-teal-500 no-underline hover:underline"
+          className="text-white no-underline hover:underline"
           href="/Register"
         >
           Бүртгэл үүсгэх
         </Link>
-        <div className="flex items-center justify-between text-sm-regular mb-5">
-          <div className="flex items-center gap-[10px]">
+        <div className="flex w-full sm:2/3 md:w-2/4 lg:w-1/3 items-center justify-between text-sm-regular mb-5">
+          <div className="flex w-2/4 items-center gap-[10px]">
             <input
               type="checkbox"
               id="remember"
-              className="w-[15px] h-[15px] border-2 border-icon"
+              className="w-[15px] h-[15px] hover:cursor-pointer border-2 border-icon"
             />
-            <label className="text-text text-teal-500" htmlFor="remember">
+            <label className="text-text text-white" htmlFor="remember">
               Намайг санах
             </label>
           </div>
 
           <Link
-            className="text-color-1 text-teal-500 hover:text-color-1/70 duration-300 py-3 px-5"
+            className="text-color-1 w-2/4 flex justify-end text-white hover:text-color-1/70 duration-300 py-3"
             href="/"
           >
             Нууц үгээ мартсан уу?
@@ -70,24 +75,12 @@ export default function Index() {
 
         <button
           onClick={() => userLogin()}
-          className="text-teal-500 outline outline-offset-2 outline-teal-500 rounded px-3"
+          className="text-white w-40 h-10 outline outline-offset-2 outline-white rounded px-3 hover:text-slate-300 hover:outline-slate-300"
         >
           Hэвтрэх
         </button>
-
-        <p className="text-center text-md-medium mb-5 text-teal-500">Эсвэл</p>
-
-        <div className="flex items-center gap-5">
-          <button className="flex items-center gap-2 text-[#1967d2] py-3 px-5 rounded-lg border-2 border-[#1967d2] hover:bg-[#1967d2] hover:text-white duration-300">
-            <FaFacebookF />
-            Facebook-ээр нэвтрэх
-          </button>
-          <button className="flex items-center gap-2 text-[#D93025] py-3 px-5 rounded-lg border-2 border-[#D93025] hover:bg-[#d93025] hover:text-white duration-300">
-            <FaGoogle />
-            Google-ээр нэвтрэх
-          </button>
-        </div>
       </div>
+    </div>
     </div>
   );
 }

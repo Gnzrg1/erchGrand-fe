@@ -29,62 +29,72 @@ body {
   color: pink;
 }
 #newsSection {
-  background-image: url("../imgs/erch.jpg");
+  background-image: url("../imgs/mq7-original-aspect-PhotoRoom.png-PhotoRoom.png");
   height: 80vh;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 #balance {
-  background-image: url("https://static2.bigstockphoto.com/5/7/5/large2/57553274.jpg");
+  background-image: url("https://i0.wp.com/gomechanic.in/blog/wp-content/uploads/2020/06/Steel-Wheel-Balancing.jpg?resize=1000%2C671&ssl=1");
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+}
+#computer-diagnosis{
+  background-image: url("https://qualitycarservice.co.uk/wp-content/uploads/sites/43/2022/09/car-diagnostics-image-04-1440x960.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
 }
 #wheel-alignment{
-  background-image: url("https://scontent.fuln5-1.fna.fbcdn.net/v/t39.30808-6/305573669_120792367401664_8852680473864456631_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=muo3R3JhxAUAX_FDclw&_nc_ht=scontent.fuln5-1.fna&oh=00_AfAXRU89Jy8huRLn5dhuLvvPLPoJgUnwGrfAOw3A8zhrGg&oe=6476638D");
+  background-image: url("https://st2.depositphotos.com/1000291/6057/i/950/depositphotos_60576009-stock-photo-car-wheel-alignment-service-work.jpg");
   background-size: cover;
+  background-position: right;
+  border-radius: 20px;
 }
-#smart-diognasis{
-  background-image: url("https://scontent.fuln5-1.fna.fbcdn.net/v/t39.30808-6/329979503_891727842152793_3008032787834741143_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=4ZpNfMKbGK4AX_mvMjI&_nc_ht=scontent.fuln5-1.fna&oh=00_AfAJceQJbv1i6zifA5szJCSs929upJ8gxKsVOwEvpA1_Nw&oe=64760BED");
+#smart-diagnosis{
+  background-image: url("https://media.istockphoto.com/id/1164677212/photo/car-diagnostics-in-a-repair-shop.jpg?s=612x612&w=0&k=20&c=uP6jwkuNehDvjHY2f1Ss0BbFzHUPtfADFTbdk0ggixQ=");
   background-size: cover;
-}
-#computer-diognasis{
-  background-image: url("https://static2.bigstockphoto.com/5/7/5/large2/57553274.jpg");
-}
-#agregat{
-  background-image: url("https://static2.bigstockphoto.com/5/7/5/large2/57553274.jpg");
-}
-#oil-change{
-  background-image: url("https://static2.bigstockphoto.com/5/7/5/large2/57553274.jpg");
-}
-#CRDI {
-  background-image: url("https://static2.bigstockphoto.com/5/7/5/large2/57553274.jpg");
+  background-position: center;
+  border-radius: 20px;
 }
 h1 {
-  font-size: 30px;
+  font-size: 35px;
+}
+#intro3 {
+  background-image: url("../imgs/erch.jpg");
+  background-size: cover;
+  background-position: left;
+  border-radius: 20px;
 }
 #intro2 {
-  background-image: url("https://wallpaperaccess.com/full/2492509.jpg");
-  background-repeat: no-repeat;
+  background-image: url("https://www.fundingcircle.com/us/resources/wp-content/uploads/2019/12/photo-1449198063792-7d754d6f3c80-1.jpg");
   background-size: cover;
+  background-position: center;
+  border-radius: 20px;
 }
 #ourTeam1 {
   background-image: url("https://th.bing.com/th/id/OIP.3Ex90_YK84_Cx1lz6FJn-wHaE8?pid=ImgDet&rs=1");
-  width:300px;
-  height: 200px;
   background-size: cover;
+  background-position: center;
+  border-radius: 20px;
 }
 #ourTeam2 {
   background-image: url("https://thumbs.dreamstime.com/b/male-car-mechanic-portrait-studio-shot-44614664.jpg ");
-  width:300px;
-  height: 200px;
-  background-size: cover;
+ background-size: cover;
+  background-position: center;
+  border-radius: 20px;
 }
 #ourTeam3 {
   background-image: url("https://static1.bigstockphoto.com/8/7/8/large1500/87855800.jpg ");
-  width:300px;
-  height: 200px;
-  background-size: cover;
+ background-size: cover;
+  background-position: center;
+  border-radius: 20px;
 }
 #ourTeam4 {
   background-image: url("https://thumbs.dreamstime.com/z/portrait-male-mechanic-near-car-service-center-portrait-male-mechanic-near-car-service-center-150045344.jpg ");
-  width:300px;
+  width:100%;
   height: 200px;
   background-size: cover;
 }
