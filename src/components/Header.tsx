@@ -28,11 +28,11 @@ export const Header = () => {
 
   return (
     <div
-      className="fixed top-0 w-5/5 ps-5 bg-head text-white sticky top-0 z-[50] bg-gradient-to-r px-8 from-gray-900 to-gray-500 z-0 ease-out duration-300"
+      className="fixed top-0 w-full bg-head text-white sticky top-0 z-[50] bg-black px-4 sm:px-8 z-0 ease-out duration-300"
       id="Navbar"
     >
-      <div className="ps-5 w-full py-2 border-b border-b-white/[.15] flex items-center justify-between">
-        <div className="flex w-1/5 items-center gap-7 hidden md:flex">
+      <div className="w-full py-2 border-b border-b-white/[.15] flex items-center justify-between">
+        <div className="flex items-center gap-7 hidden md:flex">
           <Link href="/">
             <Image
               className="w-2/4 hover:animate-spin"
@@ -41,9 +41,9 @@ export const Header = () => {
             />
           </Link>
         </div>
-        <div className="w-4/5 px-8 hidden md:flex">
+        <div className="hidden w-2/4 md:flex">
           <nav className="w-full">
-            <ul className="flex items-center justify-evenly text-md-regular">
+            <ul className="flex items-center justify-evenly text-md-regular gap-4">
               <li className="hover:text-white/70 text-white duration-300">
                 <Link href="/">Нүүр</Link>
               </li>
@@ -61,22 +61,19 @@ export const Header = () => {
           </nav>
         </div>
         <div className="flex md:hidden md:1/3">
-          <button className="text-xl">
+          <button className="text-white">
             <BsListNested />
           </button>
         </div>
 
-        <div className="flex pe-8 w-1/5 md:w-full items-center justify-end  gap-7 ps-8 ">
+        <div className="flex items-center justify-end  gap-7">
           <div className="flex gap-6">
-            <button className="text-head rounded-lg px-5 py-2 text-md-regular hover:bg-white/70 duration-300 bg-transparent hover:bg-green-500 text-white-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">
-              <Link href="/login">Цаг захиалах</Link>
-            </button>
             {userId ? (
               <div>
                 <img src="" />
               </div>
             ) : (
-              <button className="text-head rounded-lg px-5 py-2  text-md-regular hover:bg-white/70 duration-300 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              <button className="text-head rounded-lg px-5 py-2  text-md-regular hover:bg-green-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded">
                 <Link href="/Login">Нэвтрэх</Link>
               </button>
             )}
