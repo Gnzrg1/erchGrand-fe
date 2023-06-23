@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
-import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import axios from "axios";
 
 export default function Index() {
@@ -15,10 +14,9 @@ export default function Index() {
       phone: event.target.phoneNumber.value,
       password: event.target.password.value,
     };
-    // console.log(data);
-    setUserData(data);
-    console.log(userData);
+    console.log(data);
 
+    setUserData(data)
     try {
       if (userData) {
         console.log(userData);
