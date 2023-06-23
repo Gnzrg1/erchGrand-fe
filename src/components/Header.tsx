@@ -37,10 +37,10 @@ export const Header = () => {
               </li>
                 
               <li className="hover:text-white/70 text-white duration-300 ">
-                <Link href="/">Бидний тухай</Link>
+                <Link href="/#aboutUs">Бидний тухай</Link>
               </li>
               <li className="hover:text-white/70 text-white duration-300 ">
-                <Link href="/">Бидэнтэй холбогдох</Link>
+                <Link href="/#address">Бидэнтэй холбогдох</Link>
               </li>
             </ul>
           </nav>

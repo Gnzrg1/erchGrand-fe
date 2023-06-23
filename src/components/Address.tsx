@@ -4,8 +4,8 @@ import { FiFacebook, FiMapPin } from "react-icons/fi"
 
 export default function Address() {
     return(
-        <div className="sm:px-16 flex flex-col md:flex-row gap-6">
-            <div className="w-full md:w-2/4 flex flex-col gap-6">
+        <div className="sm:px-16 flex flex-col md:flex-row gap-6 pb-12 md:pb-24" id="address">
+            <div className="w-full md:w-2/4 flex flex-col gap-6 h-full">
              <div className="flex flex-col gap-2">
               <h2 className="text-white italic" style={{fontSize:"40px"}}><strong>ХОЛБОО БАРИХ</strong></h2>
               <div className="flex text-white text-[20px] md:text-[15px] lg:text-[20px] gap-3">
@@ -29,8 +29,14 @@ export default function Address() {
                     <FiMapPin />
                 </Link>
               </div>
+              <div className="flex flex-col gap-2">
+                <textarea className="placeholder:text-slate-300 block w-full md:w-3/4 lg:w-2/4 bg-white border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Сэтгэгдэл..." name="search"/>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style={{width:"150px"}}>
+                Submit
+                </button>
+              </div>
             </div>
-            <div className="w-full md:w-2/4 h-[50vh] rounded-[20px]" id="mapPicture"></div>
+            <div className="w-full md:w-2/4 h-[60vh] rounded-[20px]" id="mapPicture"></div>
         </div>
     )
 }
