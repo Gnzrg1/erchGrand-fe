@@ -16,7 +16,7 @@ export default function Index() {
       password: event.target.password.value,
     };
     console.log(data);
-    
+
     setUserData(data)
     try {
       if (userData) {
