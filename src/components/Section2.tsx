@@ -6,7 +6,7 @@ export const Section2 = () => {
   return (
     <div className="sm:px-16 flex flex-col lg:flex-row gap-12">
       <div className="w-full lg:w-1/3 h-[60vh] flex flex-col justify-between items-start">
-        <h2 className="text-white italic" style={{fontSize:"45px"}}><strong>Бидний Үйлчилгээ</strong></h2>
+        <h2 className="text-white italic" style={{fontSize:"40px"}}><strong>БИДНИЙ ҮЙЛЧИЛГЭЭ</strong></h2>
         <div className="h-2/4 lg:h-3/5 w-full px-4 py-4 flex justify-start items-end" id="wheel-alignment">
           <div className="h-10 w-40 bg-white rounded-lg flex justify-center items-center">Тэнхлэг тохиргоо</div>
         </div>

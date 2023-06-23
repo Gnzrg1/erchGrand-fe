@@ -98,3 +98,8 @@ h1 {
   height: 200px;
   background-size: cover;
 }
+#mapPicture {
+  background-image: url("../imgs/mapPic.png");
+  background-size: cover;
+  background-position: center;
+}

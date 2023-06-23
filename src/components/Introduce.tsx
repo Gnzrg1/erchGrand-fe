@@ -5,7 +5,7 @@ export const Introduce = () => {
     <div className="sm:px-16 flex flex-col gap-8">
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="w-full lg:w-2/5 flex flex-col gap-4">
-          <h2 className="text-white italic" style={{fontSize:"45px"}}><strong>Бидний Тухай</strong></h2>
+          <h2 className="text-white italic" style={{fontSize:"40px"}}><strong>БИДНИЙ ТУХАЙ</strong></h2>
           <p className="text-white">“Эрч Гранд” ХХК нь 2010 оноос эхлэн автозасвар үйлчилгээ, автосэлбэгийн худалдаа эрхлэх чиглэлээр үйл ажиллагаа явуулж эхэлсэн.</p>
         </div>
         <p className="w-full lg:w-3/5 flex justify-center items-center text-white">

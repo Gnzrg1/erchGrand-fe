@@ -10,21 +10,6 @@ export const Header = () => {
   useEffect(() => {
     userId ? "" : setUserId(localStorage.getItem("currentUserId"));
   }, []);
-  let lastScrollTop = 0;
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", function () {
-      const Navbar = (document.getElementById("Navbar") as HTMLElement) || null;
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop) {
-        Navbar.style.top = "-200px";
-      } else {
-        Navbar.style.top = "0px";
-        Navbar.style.color = "black";
-        Navbar.style.zIndex = "100";
-      }
-      lastScrollTop = scrollTop;
-    });
-  }
 
   return (
     <div
@@ -50,7 +35,7 @@ export const Header = () => {
               <li className="hover:text-white/70 text-white duration-300">
                 <Link href="/#serviceSection">Засвар үйлчилгээ</Link>
               </li>
-
+                
               <li className="hover:text-white/70 text-white duration-300 ">
                 <Link href="/">Бидний тухай</Link>
               </li>
@@ -73,7 +58,7 @@ export const Header = () => {
                 <img src="" />
               </div>
             ) : (
-              <button className="text-head rounded-lg px-5 py-2  text-md-regular hover:bg-green-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded">
+              <button className="text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded">
                 <Link href="/Login">Нэвтрэх</Link>
               </button>
             )}
