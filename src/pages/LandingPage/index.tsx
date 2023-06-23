@@ -4,20 +4,25 @@ import { VscTools} from "react-icons/vsc";
 import { Section2 } from "@/components/Section2";
 import { OurTeam } from "@/components/OurTeam";
 import { Introduce } from "@/components/Introduce";
-import { ContactUs } from "@/components/ContactUs";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import Address from "@/components/Address";
+import { TbCalendarTime } from "react-icons/tb";
+import Link from "next/link";
+
 export default function LandingPage() {
   return (
     <div>
       <Header/>
     <div className="static top-0 w-full flex flex-col gap-12 md:gap-24 bg-black px-4 sm:px-8">
         <div className="bg-gradient-to-r from-gray-900 to-gray-700" style={{borderRadius:"20px"}}>
-          <div className="w-full flex p-8" id="newsSection">
+          <div className="w-full flex flex-col justify-end sm:justify-between p-8" id="newsSection">
             <h2 className="text-white hidden sm:flex" style={{fontSize:"45px"}}><strong>Эрч Гранд Авто Сервис</strong></h2>
             <div></div>
-            <button></button>
+            <Link href="/Booking" className="w-[200px] h-[150px] text-white bg-slate-500 text-[1.5rem] flex flex-col justify-center items-center rounded-[20px] hover:text-slate-300">
+              <TbCalendarTime className="text-[3rem]"/>
+              Цаг захиалах
+            </Link>
           </div>
         </div>
       <Section2/>
@@ -60,7 +65,6 @@ export default function LandingPage() {
       <Introduce/>
       <OurTeam />
       <Address/>
-      <ContactUs/>
     </div>
     <Footer/>
     </div>

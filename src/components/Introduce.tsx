@@ -2,7 +2,7 @@ import React from "react";
 
 export const Introduce = () => {
   return (
-    <div className="sm:px-16 flex flex-col gap-8">
+    <div className="sm:px-16 flex flex-col gap-8" id="aboutUs">
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="w-full lg:w-2/5 flex flex-col gap-4">
           <h2 className="text-white italic" style={{fontSize:"40px"}}><strong>БИДНИЙ ТУХАЙ</strong></h2>

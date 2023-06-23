@@ -4,7 +4,7 @@ import { useState } from "react";
 export const Section2 = () => {
   const [show, setShow] = useState(false);
   return (
-    <div className="sm:px-16 flex flex-col lg:flex-row gap-12">
+    <div className="sm:px-16 flex flex-col lg:flex-row gap-12" id="serviceSection">
       <div className="w-full lg:w-1/3 h-[60vh] flex flex-col justify-between items-start">
         <h2 className="text-white italic" style={{fontSize:"40px"}}><strong>БИДНИЙ ҮЙЛЧИЛГЭЭ</strong></h2>
         <div className="h-2/4 lg:h-3/5 w-full px-4 py-4 flex justify-start items-end" id="wheel-alignment">
