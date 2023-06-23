@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
-import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import axios from "axios";
 
 export default function Index() {
