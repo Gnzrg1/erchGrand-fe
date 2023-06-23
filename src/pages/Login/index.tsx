@@ -28,7 +28,7 @@ export default function Index() {
 
   return (
     <div className="bg-black">
-      <Link href="/LandingPage">
+      <Link href="/LandingPage" className="hover:bg-slate-800 w-10 h-10 flex justify-center items-center rounded-lg">
         <IoMdArrowBack className="text-white text-[2rem]"/>
       </Link>
     <div className="w-[100vw] h-[100vh] flex justify-center items-start bg-black p-4">
@@ -37,13 +37,13 @@ export default function Index() {
         <input
           //   onChange={(e) => setLogEmail(e.target.value)}
           className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg block w-full sm:2/3 md:w-2/4 lg:w-1/3 p-2.5 active:border-sky-400"
-          placeholder="Email"
+          placeholder="Имайл"
           onChange={(e) => setEmailVal(e.target.value)}
         />
         <input
           //   onChange={(e) => setLogPassword(e.target.value)}
           className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg block w-full sm:2/3 md:w-2/4 lg:w-1/3 p-2.5 active:border-sky-400"
-          placeholder="Password"
+          placeholder="Нууц үг"
           type="password"
           onChange={(e) => setPassVal(e.target.value)}
         />

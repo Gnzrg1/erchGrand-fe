@@ -15,12 +15,6 @@ export default function Index() {
       phone: event.target.phoneNumber.value,
       password: event.target.password.value,
     };
-    if (event.target.password.value == event.target.rePassword.value) {
-      setUserData(data);
-    } else {
-      alert("Нууц үг таарахгүй байна");
-    }
-
     try {
       if (userData) {
         console.log(userData);
@@ -50,7 +44,7 @@ export default function Index() {
 
   return (
     <div className="bg-black h-[100vh]">
-        <Link href="/Login">
+        <Link href="/Login" className="hover:bg-slate-800 w-10 h-10 flex justify-center items-center rounded-lg">
           <IoMdArrowBack className="text-white text-[2rem]"/>
         </Link>
     <div className="p-[50px] bg-black shadow-shadow-dashboard">

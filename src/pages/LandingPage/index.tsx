@@ -7,6 +7,7 @@ import { Introduce } from "@/components/Introduce";
 import { ContactUs } from "@/components/ContactUs";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import Address from "@/components/Address";
 export default function LandingPage() {
   return (
     <div>
@@ -58,6 +59,7 @@ export default function LandingPage() {
       </div>
       <Introduce/>
       <OurTeam />
+      <Address/>
       <ContactUs/>
     </div>
     <Footer/>
