@@ -138,10 +138,6 @@ export default function Index() {
                   id="password"
                   className="text-black border border-border-2 w-full py-[12px] px-[22px] rounded-lg focus:outline-none focus:ring-2 focus:ring-color-1 text-text text-black text-md-regular"
                   placeholder="Нууц үг"
-                  //   value={rePassword}
-                  //   onChange={(e): void => {
-                  // setRePassword(e.target.value);
-                  //   }}
                 />
               </div>
             </div>
@@ -149,7 +145,6 @@ export default function Index() {
           <button
             type="submit"
             className="block w-40 py-4  text-head rounded-lg outline outline-offset-2 outline-white mb-5 duration-300 text-white hover:text-slate-300 hover:outline-slate-300"
-            //   disabled={confirm ? false : true}
           >
             Бүртгүүлэх
           </button>

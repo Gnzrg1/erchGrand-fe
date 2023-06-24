@@ -7,6 +7,9 @@ import { useRouter } from "next/router";
 export default function Booking() {
   const [timeData, setTimeData] = useState([]);
   const [orderData, setOrderData] = useState({});
+  const [serVal, setSerVal] = useState(true);
+  const [orderVal, setOrderVal] = useState({});
+
   const route = useRouter()
   useEffect(()=>{
     axios 
@@ -14,8 +17,19 @@ export default function Booking() {
       .then((res) => setTimeData(res.data.result))
       .catch((err) => console.log(err)
       )
+  },[]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/order")
+      .then((res) => setOrderVal(res.data.result))
+      .catch((err) => console.log(err))
   },[])
-      
+  const today = new Date();
+  const numberOfDaysToAdd = 7;
+  const date = today.setDate(today.getDate());
+  const nextWeek = today.setDate(today.getDate() + numberOfDaysToAdd); 
+  const defaultValue = new Date(date).toISOString().split('T')[0];
+  const nextWeekVal = new Date(nextWeek).toISOString().split('T')[0];
   const bookTime = async (event: any) => {
     event.preventDefault();
     const data = {
@@ -39,7 +53,16 @@ export default function Booking() {
         .post("http://localhost:8000/api/order", orderData)
         .then((res) => {
           if (res.data.status) {
-            alert("Amjilttai zahiallaa.");
+            if (data.Phone.length == 8) {
+              if (data.time !== orderVal.time) {
+                alert("Amjilttai zahiallaa.");
+                route.push("/LandingPage");
+              } else {
+                alert("Ene tsagiig uur hun zahialsn baina.")
+              }
+            } else {
+              alert("Utasnii dugaar buruu baina.")
+            }
           } else {
             alert("Ta buren buglunu uu!");
           }
@@ -53,6 +76,17 @@ export default function Booking() {
       
     }
   };
+  const services = ["Тэнхлэг тохиргоо", "Смарт оношлогоо"];
+  const WA = ["Сайнбилэг", "Мөнхбат", "Баянмөнх"];
+  const SD = ["Шижир","Сайнбилэг", "Баянмөнх"];
+  // const KD = ["Шижир","Батхишиг", "Баянмөнх"];
+  const handleChange = (e : any) => {
+if(e == services[0]){
+  setSerVal(true)
+} else if (e == services[1]){
+  setSerVal(false)
+}
+  }
   return (
     <div>
         <div className="bg-black h-[100vh]">
@@ -78,6 +112,8 @@ export default function Booking() {
             <input
               name="dateDay"
               type="date"
+              min={defaultValue}
+              max={nextWeekVal}
               id="dateDay"
               className="text-black border border-border-2 w-full py-[12px] px-[22px] rounded-lg focus:outline-none focus:ring-2 focus:ring-color-1 text-text text-md-regular"
             />
@@ -91,14 +127,17 @@ export default function Booking() {
               Үйлчилгээ
             </label>
             <select
+              onChange={(e)=> handleChange(e.target.value)}
               name="services"
               id="services"
               className="text-black border border-border-2 w-full py-[12px] px-[22px] rounded-lg focus:outline-none focus:ring-2 focus:ring-color-1 text-text text-md-regular"
             >
-              <option selected>Сонгох</option>
-              <option>Тэнхлэг тохиргоо</option>
-              <option>Смарт оношлогоо</option>
-              <option>Комьпютер оношлогоо</option>
+              <option selected></option>
+              {services.map((e) => {
+                return(
+                  <option>{e}</option>
+                )
+              })}
             </select>
           </div>
           </div>
@@ -115,13 +154,16 @@ export default function Booking() {
               id="mechanic"
               className="text-black border border-border-2 w-full py-[12px] px-[22px] rounded-lg focus:outline-none focus:ring-2 focus:ring-color-1 text-text text-md-regular"
             >
-              <option selected>Сонгох</option>
-              <option>Сайнбилэг</option>
-              <option>Мөнхбат</option>
-              <option>Шижир</option>
-              <option>Баянмөнх</option>
-              <option>Батхишиг</option>
-              <option>Билгүүтэй</option>
+              <option selected></option>
+              {serVal ? (WA.map((e) => {
+                return (
+                  <option>{e}</option>
+                )
+              })):(SD.map((e) => {
+                return(
+                  <option>{e}</option>
+                )
+              }))}
             </select>
           </div>
 
@@ -137,7 +179,7 @@ export default function Booking() {
               id="time"
               className="text-black border border-border-2 w-full py-[12px] px-[22px] rounded-lg focus:outline-none focus:ring-2 focus:ring-color-1 text-text text-md-regular"
             >
-              <option selected>Сонгох</option>
+              <option selected></option>
               {timeData?.map((e , index) => {
                 return(
                   <option key={index}>{e.time}</option>
@@ -150,7 +192,6 @@ export default function Booking() {
             <div className="w-full md:w-2/4">
               <label
                 className="block mb-2 text-lg-medium text-white"
-                htmlFor="password"
               >
                 Утасны дугаар
               </label>
@@ -165,7 +206,6 @@ export default function Booking() {
             <div className="w-full md:w-2/4">
               <label
                 className="block mb-2 text-lg-medium text-white"
-                htmlFor="password"
               >
                 Машины марк
               </label>

@@ -11,22 +11,22 @@ export const Header = () => {
   useEffect(() => {
     userId ? "" : setUserId(localStorage.getItem("currentUserId"));
   }, []);
-  let lastScrollTop = 0;
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", function () {
-      const Navbar = document.getElementById("Navbar") as HTMLElement;
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop) {
-        Navbar.style.top = "-200px";
-      } else {
-        Navbar.style.top = "0px";
-        Navbar.style.color = "black";
-        Navbar.style.zIndex = "100";
-      }
-      lastScrollTop = scrollTop;
-    });
-  }
+  // let lastScrollTop = 0;
+  // if (typeof window !== "undefined") {
+  //   window.addEventListener("scroll", function () {
+  //     const Navbar = document.getElementById("Navbar") as HTMLElement;
+  //     const scrollTop =
+  //       window.pageYOffset || document.documentElement.scrollTop;
+  //     if (scrollTop > lastScrollTop) {
+  //       Navbar.style.top = "-200px";
+  //     } else {
+  //       Navbar.style.top = "0px";
+  //       Navbar.style.color = "black";
+  //       Navbar.style.zIndex = "100";
+  //     }
+  //     lastScrollTop = scrollTop;
+  //   });
+  // }
   return (
     <div
       className="fixed top-0 w-full bg-head text-white sticky top-0 z-[50] bg-black px-4 sm:px-8 z-0 ease-out duration-300"
