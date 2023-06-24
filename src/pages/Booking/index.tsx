@@ -41,8 +41,7 @@ export default function Booking() {
           if (res.data.status) {
             alert("Amjilttai zahiallaa.");
           } else {
-            alert("Ta ehleed nevterne uu!");
-            route.push("/Login");
+            alert("Ta buren buglunu uu!");
           }
         })
         .catch((err) => {
@@ -138,6 +137,7 @@ export default function Booking() {
               id="time"
               className="text-black border border-border-2 w-full py-[12px] px-[22px] rounded-lg focus:outline-none focus:ring-2 focus:ring-color-1 text-text text-md-regular"
             >
+              <option selected>Сонгох</option>
               {timeData?.map((e , index) => {
                 return(
                   <option key={index}>{e.time}</option>
