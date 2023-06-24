@@ -2,10 +2,12 @@ import React, { useState , useEffect} from 'react';
 import Link from 'next/link';
 import { IoMdArrowBack } from 'react-icons/io';
 import axios from 'axios';
+import { useRouter } from "next/router";
 
 export default function Booking() {
   const [timeData, setTimeData] = useState([]);
   const [orderData, setOrderData] = useState({});
+  const route = useRouter()
   useEffect(()=>{
     axios 
       .get("http://localhost:8000/api/time")
@@ -24,7 +26,7 @@ export default function Booking() {
       Phone: event.target.phoneNumber.value,
       carModel: event.target.carModel.value,
       carNum: event.target.carNum.value,
-      userId : "gu"
+      userId : localStorage.getItem("currentUserId")
     }
     console.log(data);
     
@@ -40,6 +42,7 @@ export default function Booking() {
             alert("Amjilttai zahiallaa.");
           } else {
             alert("Ta ehleed nevterne uu!");
+            route.push("/Login");
           }
         })
         .catch((err) => {
