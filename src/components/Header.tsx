@@ -4,6 +4,7 @@ import Link from "next/link";
 import Erchlogo from "../imgs/ErchLogo.png";
 import { BsListNested } from "react-icons/bs";
 import { userIdCon } from "../Context/userIdContext";
+import { BiLogIn } from "react-icons/bi";
 
 export const Header = () => {
   const { userId, setUserId } = useContext(userIdCon);
@@ -70,9 +71,15 @@ export const Header = () => {
         <div className="flex items-center justify-end  gap-7">
           <div className="flex gap-6">
             {userId ? (
-              <div>
-                <img src="" />
-              </div>
+              <button
+                onClick={() => {
+                  localStorage.removeItem("currentUserId"), setUserId("");
+                }}
+                className="flex justify-between items-center text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded"
+              >
+                <p>Гарах</p>
+                <BiLogIn className="text-2xl pt-1" />
+              </button>
             ) : (
               <button className="text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded">
                 <Link href="/Login">Нэвтрэх</Link>

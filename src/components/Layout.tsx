@@ -4,7 +4,7 @@ import { Meta } from "./Meta";
 import { userIdCon } from "../Context/userIdContext";
 
 export const Layout = ({ children }: any) => {
-  const { userId, setUserId } = useContext(userIdCon);
+  const { setUserId } = useContext(userIdCon);
   useEffect(() => {
     setUserId(localStorage.getItem("currentUserId"));
   }, []);
