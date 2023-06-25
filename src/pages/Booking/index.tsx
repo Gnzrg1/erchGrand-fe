@@ -23,9 +23,6 @@ export default function Booking() {
         if (e?.time != order?.time) {
           if (!newArr.includes(e.time)) {
             newArr.push(e.time), setTime2(newArr);
-            if (!newArr) {
-              setTime2(timeData);
-            }
           }
         }
       });
@@ -72,23 +69,20 @@ export default function Booking() {
       Phone: event.target.phoneNumber.value,
       carModel: event.target.carModel.value,
       carNum: event.target.carNum.value,
-      userId: userId,
+      userId: localStorage.getItem("currentUserId"),
     };
+
     setOrderData(data);
-    try {
-      if (orderData) {
-        axios
-          .post("http://localhost:8000/api/order", orderData)
-          .then((res) => {
-            alert("Amjilttai zahiallaa");
-            console.log(res.data.result);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-    } catch (error) {
-      console.log(error);
+    if (orderData) {
+      axios
+        .post("http://localhost:8000/api/order", orderData)
+        .then((res) => {
+          alert("Amjilttai zahiallaa");
+          console.log(res.data.result);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
   const services = ["Тэнхлэг тохиргоо", "Смарт оношлогоо"];
@@ -102,6 +96,7 @@ export default function Booking() {
       setSerVal("Смарт оношлогоо");
     }
   };
+  // console.log(userId);
   return (
     <div>
       <div className="bg-black h-[100vh]">
