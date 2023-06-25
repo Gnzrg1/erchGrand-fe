@@ -76,8 +76,8 @@ export const Header = () => {
                 }}
                 className="flex justify-between items-center text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded"
               >
-                <p>Гарах</p>
                 <BiLogOut className="text-2xl pt-1" />
+                <p>Гарах</p>
               </button>
             ) : (
               <button className="text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded">

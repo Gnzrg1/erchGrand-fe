@@ -43,6 +43,7 @@ export default function LandingPage() {
           </div>
         </div>
         <Section2 />
+        x``
         <div
           className="w-full flex flex-col gap-4 py-10 bg-gradient-to-r from-gray-900 to-gray-700  px-4 sm:px-16"
           id="serviceSection"
