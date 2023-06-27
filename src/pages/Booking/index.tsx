@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
 import axios from "axios";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { userIdCon } from "@/Context/userIdContext";
 
 export default function Booking() {
@@ -28,15 +28,11 @@ export default function Booking() {
       });
     });
   }, [orderVal]);
-
-  // const route = useRouter();
   useEffect(() => {
     if (dateVal && mechVal) {
       setTest(true);
     }
   }, [mechVal, dateVal]);
-  // console.log(timeData);
-
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/time")
@@ -52,7 +48,6 @@ export default function Booking() {
       .then((res) => setOrderVal(res.data.result))
       .catch((err) => console.log(err));
   }, [test]);
-  // console.log(orderVal);
   const today = new Date();
   const numberOfDaysToAdd = 7;
   const date = today.setDate(today.getDate());
@@ -88,7 +83,6 @@ export default function Booking() {
   const services = ["Тэнхлэг тохиргоо", "Смарт оношлогоо"];
   const WA = ["Сайнбилэг", "Мөнхбат", "Баянмөнх"];
   const SD = ["Шижир", "Сайнбилэг", "Баянмөнх"];
-  // const KD = ["Шижир","Батхишиг", "Баянмөнх"];
   const handleChange = (e: any) => {
     if (e == services[0]) {
       setSerVal("Тэнхлэг тохиргоо");
@@ -96,10 +90,7 @@ export default function Booking() {
       setSerVal("Смарт оношлогоо");
     }
   };
-  // console.log(userId);
   return (
-
-    
     <div>
       <div className="bg-black h-[100vh]">
         <Link
