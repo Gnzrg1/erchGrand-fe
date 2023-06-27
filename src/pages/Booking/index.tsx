@@ -2,8 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
 import axios from "axios";
-// import { useRouter } from "next/router";
-import { userIdCon } from "@/Context/userIdContext";
 
 export default function Booking() {
   const [timeData, setTimeData] = useState([]);
@@ -11,7 +9,6 @@ export default function Booking() {
   const [serVal, setSerVal] = useState("");
   const [orderVal, setOrderVal] = useState([]);
   const [mechVal, setMechVal] = useState<String>();
-  const { userId } = useContext(userIdCon);
   const [dateVal, setDateVal] = useState("");
   const [test, setTest] = useState(false);
   const [time2, setTime2] = useState([]);
