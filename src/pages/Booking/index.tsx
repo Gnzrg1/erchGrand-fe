@@ -98,6 +98,8 @@ export default function Booking() {
   };
   // console.log(userId);
   return (
+
+    
     <div>
       <div className="bg-black h-[100vh]">
         <Link
