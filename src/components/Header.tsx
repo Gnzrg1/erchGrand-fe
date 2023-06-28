@@ -1,16 +1,85 @@
-import react, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Erchlogo from "../imgs/ErchLogo.png";
 import { BsListNested } from "react-icons/bs";
 import { userIdCon } from "../Context/userIdContext";
 import { BiLogOut } from "react-icons/bi";
+import Badge from '@mui/material/Badge';
+import { FiMail } from "react-icons/fi";
+import axios from "axios";
+import Dialog from '@mui/material/Dialog';
 
-export const Header = () => {
+export interface SimpleDialogProps {
+  open: boolean;
+  selectedValue: string;
+  onClose: (value: string) => void;
+}
+
+function SimpleDialog(props: SimpleDialogProps) {
+  const { onClose, selectedValue, open } = props;
+  const [ordVal, setOrdVal] = useState([]);
   const { userId, setUserId } = useContext(userIdCon);
   useEffect(() => {
     userId ? "" : setUserId(localStorage.getItem("currentUserId"));
   }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/orders/:_id")
+      .then((res) => {
+        setOrdVal(res.data.result);        
+      })
+      .catch((err) => {console.log(err);
+      })
+  })
+  console.log(ordVal);
+  
+  const handleClose = () => {
+    onClose(selectedValue);
+  };
+  
+  return (
+    <Dialog onClose={handleClose} open={open}>
+      <ul className="w-[200px] bg-white">
+        {ordVal.map((e) => {
+          return (
+            <li className="flex">
+              <div>{e.work}</div>
+              <div>{e.date}</div>
+              <div>{e.time}</div>
+            </li>
+          )
+        })}
+        <div>Хоосон байна.</div>
+      </ul>
+      
+    </Dialog>
+  );
+}
+export const Header = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value: string) => {
+    setOpen(false);
+  };
+  const [ordVal, setOrdVal] = useState({});
+  const { userId, setUserId } = useContext(userIdCon);
+  useEffect(() => {
+    userId ? "" : setUserId(localStorage.getItem("currentUserId"));
+  }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/orders/:_id")
+      .then((res) => {
+        setOrdVal(res.data.result)
+      })
+      .catch((err) => {console.log(err);
+      })
+  })
   // let lastScrollTop = 0;
   // if (typeof window !== "undefined") {
   //   window.addEventListener("scroll", function () {
@@ -36,7 +105,7 @@ export const Header = () => {
         <div className="flex items-center gap-7 hidden md:flex">
           <Link href="/">
             <Image
-              className="w-2/4 hover:animate-spin"
+              className="hover:animate-spin w-10 h-10"
               src={Erchlogo}
               alt="ErchLogo"
             />
@@ -70,6 +139,19 @@ export const Header = () => {
         <div className="flex items-center justify-end  gap-7">
           <div className="flex gap-6">
             {userId ? (
+              <div className="flex justify-center items-center gap-5">
+                <div>
+                <button onClick={handleClickOpen}>
+                  <Badge badgeContent={ordVal.length} color="primary">
+                    <FiMail className="text-2xl"/>
+                  </Badge>
+                </button>
+                <SimpleDialog
+                  selectedValue=""
+                  open={open}
+                  onClose={handleClose}
+                />
+                </div>
               <button
                 onClick={() => {
                   localStorage.removeItem("currentUserId"), setUserId("");
@@ -79,6 +161,7 @@ export const Header = () => {
                 <BiLogOut className="text-2xl pt-1" />
                 <p>Гарах</p>
               </button>
+              </div>
             ) : (
               <button className="text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded">
                 <Link href="/Login">Нэвтрэх</Link>
