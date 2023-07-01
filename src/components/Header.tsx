@@ -5,10 +5,10 @@ import Erchlogo from "../imgs/ErchLogo.png";
 import { BsListNested } from "react-icons/bs";
 import { userIdCon } from "../Context/userIdContext";
 import { BiLogOut } from "react-icons/bi";
-import Badge from '@mui/material/Badge';
+import Badge from "@mui/material/Badge";
 import { FiMail } from "react-icons/fi";
 import axios from "axios";
-import Dialog from '@mui/material/Dialog';
+import Dialog from "@mui/material/Dialog";
 
 export interface SimpleDialogProps {
   open: boolean;
@@ -25,34 +25,34 @@ function SimpleDialog(props: SimpleDialogProps) {
   }, []);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/orders/:_id")
+      .get("http://localhost:8000/api/order")
       .then((res) => {
-        setOrdVal(res.data.result);        
+        setOrdVal(res.data.result);
       })
-      .catch((err) => {console.log(err);
-      })
-  })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
   console.log(ordVal);
-  
+
   const handleClose = () => {
     onClose(selectedValue);
   };
-  
+
   return (
     <Dialog onClose={handleClose} open={open}>
       <ul className="w-[200px] bg-white">
-        {ordVal.map((e) => {
+        {ordVal.map((e, index) => {
           return (
-            <li className="flex">
+            <li key={index} className="flex">
               <div>{e.work}</div>
               <div>{e.date}</div>
               <div>{e.time}</div>
             </li>
-          )
+          );
         })}
         <div>Хоосон байна.</div>
       </ul>
-      
     </Dialog>
   );
 }
@@ -75,27 +75,28 @@ export const Header = () => {
     axios
       .get("http://localhost:8000/api/orders/:_id")
       .then((res) => {
-        setOrdVal(res.data.result)
+        setOrdVal(res.data.result);
       })
-      .catch((err) => {console.log(err);
-      })
-  })
-  // let lastScrollTop = 0;
-  // if (typeof window !== "undefined") {
-  //   window.addEventListener("scroll", function () {
-  //     const Navbar = document.getElementById("Navbar") as HTMLElement;
-  //     const scrollTop =
-  //       window.pageYOffset || document.documentElement.scrollTop;
-  //     if (scrollTop > lastScrollTop) {
-  //       Navbar.style.top = "-200px";
-  //     } else {
-  //       Navbar.style.top = "0px";
-  //       Navbar.style.color = "black";
-  //       Navbar.style.zIndex = "100";
-  //     }
-  //     lastScrollTop = scrollTop;
-  //   });
-  // }
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+  let lastScrollTop = 0;
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", function () {
+      const Navbar = document.getElementById("Navbar") as HTMLElement;
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        Navbar.style.top = "-200px";
+      } else {
+        Navbar.style.top = "0px";
+        Navbar.style.color = "black";
+        Navbar.style.zIndex = "100";
+      }
+      lastScrollTop = scrollTop;
+    });
+  }
   return (
     <div
       className="fixed top-0 w-full bg-head text-white sticky top-0 z-[50] bg-black px-4 sm:px-8 z-0 ease-out duration-300"
@@ -141,26 +142,26 @@ export const Header = () => {
             {userId ? (
               <div className="flex justify-center items-center gap-5">
                 <div>
-                <button onClick={handleClickOpen}>
-                  <Badge badgeContent={ordVal.length} color="primary">
-                    <FiMail className="text-2xl"/>
-                  </Badge>
-                </button>
-                <SimpleDialog
-                  selectedValue=""
-                  open={open}
-                  onClose={handleClose}
-                />
+                  <button onClick={handleClickOpen}>
+                    <Badge badgeContent={ordVal.length} color="primary">
+                      <FiMail className="text-2xl" />
+                    </Badge>
+                  </button>
+                  <SimpleDialog
+                    selectedValue=""
+                    open={open}
+                    onClose={handleClose}
+                  />
                 </div>
-              <button
-                onClick={() => {
-                  localStorage.removeItem("currentUserId"), setUserId("");
-                }}
-                className="flex justify-between items-center text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded"
-              >
-                <BiLogOut className="text-2xl pt-1" />
-                <p>Гарах</p>
-              </button>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem("currentUserId"), setUserId("");
+                  }}
+                  className="flex justify-between items-center text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded"
+                >
+                  <BiLogOut className="text-2xl pt-1" />
+                  <p>Гарах</p>
+                </button>
               </div>
             ) : (
               <button className="text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded">
