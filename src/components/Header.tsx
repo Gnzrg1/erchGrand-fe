@@ -20,12 +20,13 @@ function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
   const [ordVal, setOrdVal] = useState([]);
   const { userId, setUserId } = useContext(userIdCon);
+  const [empty, setEmpty] = useState(true);
   useEffect(() => {
     userId ? "" : setUserId(localStorage.getItem("currentUserId"));
   }, []);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/orders/:_id")
+      .get("http://localhost:8000/api/order")
       .then((res) => {
         setOrdVal(res.data.result);        
       })
@@ -34,23 +35,30 @@ function SimpleDialog(props: SimpleDialogProps) {
   })
   console.log(ordVal);
   
+  if (ordVal.length == 0) {
+    setEmpty(false)
+  } else {
+    setEmpty(true)
+  };
   const handleClose = () => {
     onClose(selectedValue);
   };
   
   return (
     <Dialog onClose={handleClose} open={open}>
-      <ul className="w-[200px] bg-white">
-        {ordVal.map((e) => {
+      <ul className="w-[400px] bg-white">
+        {empty ? (
+        ordVal.map((e) => {
           return (
             <li className="flex">
               <div>{e.work}</div>
               <div>{e.date}</div>
               <div>{e.time}</div>
             </li>
-          )
-        })}
+            )})) :
+        (
         <div>Хоосон байна.</div>
+        )}
       </ul>
       
     </Dialog>
@@ -73,7 +81,7 @@ export const Header = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/orders/:_id")
+      .get("http://localhost:8000/api/order")
       .then((res) => {
         setOrdVal(res.data.result)
       })
