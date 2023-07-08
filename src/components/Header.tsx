@@ -20,6 +20,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
   const [ordVal, setOrdVal] = useState([]);
   const { userId, setUserId } = useContext(userIdCon);
+  const [empty, setEmpty] = useState(true);
   useEffect(() => {
     userId ? "" : setUserId(localStorage.getItem("currentUserId"));
   }, []);
@@ -34,7 +35,6 @@ function SimpleDialog(props: SimpleDialogProps) {
       });
   });
   console.log(ordVal);
-
   const handleClose = () => {
     onClose(selectedValue);
   };
@@ -73,7 +73,7 @@ export const Header = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/orders/:_id")
+      .get("http://localhost:8000/api/order")
       .then((res) => {
         setOrdVal(res.data.result);
       })
@@ -88,9 +88,9 @@ export const Header = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
       if (scrollTop > lastScrollTop) {
-        Navbar.style.top = "-200px";
+        Navbar.style.top = "-80px";
       } else {
-        Navbar.style.top = "0px";
+        Navbar.style.top = "1px";
         Navbar.style.color = "black";
         Navbar.style.zIndex = "100";
       }
