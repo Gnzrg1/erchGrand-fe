@@ -20,24 +20,24 @@ function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
   const [ordVal, setOrdVal] = useState([]);
   const { userId, setUserId } = useContext(userIdCon);
-  const [empty, setEmpty] = useState(true);
+  // const [empty, setEmpty] = useState(true);
   useEffect(() => {
     userId ? "" : setUserId(localStorage.getItem("currentUserId"));
   }, []);
+  // console.log(ordVal);
+  const handleClose = () => {
+    onClose(selectedValue);
+  };
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/order")
+      .post("http://localhost:8000/api/orderUser", { userId: userId })
       .then((res) => {
         setOrdVal(res.data.result);
       })
       .catch((err) => {
         console.log(err);
       });
-  });
-  console.log(ordVal);
-  const handleClose = () => {
-    onClose(selectedValue);
-  };
+  }, []);
 
   return (
     <Dialog onClose={handleClose} open={open}>
@@ -66,21 +66,21 @@ export const Header = () => {
   const handleClose = (value: string) => {
     setOpen(false);
   };
-  const [ordVal, setOrdVal] = useState({});
+  const [ordVal2, setOrdVal2] = useState([]);
   const { userId, setUserId } = useContext(userIdCon);
   useEffect(() => {
     userId ? "" : setUserId(localStorage.getItem("currentUserId"));
   }, []);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/order")
+      .post("http://localhost:8000/api/orderUser", { userId: userId })
       .then((res) => {
-        setOrdVal(res.data.result);
+        setOrdVal2(res.data.result);
       })
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, []);
   let lastScrollTop = 0;
   if (typeof window !== "undefined") {
     window.addEventListener("scroll", function () {
@@ -143,7 +143,7 @@ export const Header = () => {
               <div className="flex justify-center items-center gap-5">
                 <div>
                   <button onClick={handleClickOpen}>
-                    <Badge badgeContent={ordVal.length} color="primary">
+                    <Badge badgeContent={ordVal2?.length} color="primary">
                       <FiMail className="text-2xl" />
                     </Badge>
                   </button>
