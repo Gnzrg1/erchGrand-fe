@@ -5,10 +5,10 @@ import Erchlogo from "../imgs/ErchLogo.png";
 import { BsListNested } from "react-icons/bs";
 import { userIdCon } from "../Context/userIdContext";
 import { BiLogOut } from "react-icons/bi";
-import Badge from '@mui/material/Badge';
+import Badge from "@mui/material/Badge";
 import { FiMail } from "react-icons/fi";
 import axios from "axios";
-import Dialog from '@mui/material/Dialog';
+import Dialog from "@mui/material/Dialog";
 
 export interface SimpleDialogProps {
   open: boolean;
@@ -20,47 +20,45 @@ function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
   const [ordVal, setOrdVal] = useState([]);
   const { userId, setUserId } = useContext(userIdCon);
-  const [empty, setEmpty] = useState(true);
   useEffect(() => {
     userId ? "" : setUserId(localStorage.getItem("currentUserId"));
   }, []);
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/order")
-      .then((res) => {
-        setOrdVal(res.data.result);        
-      })
-      .catch((err) => {console.log(err);
-      })
-  })
-  console.log(ordVal);
-  
-  if (ordVal.length == 0) {
-    setEmpty(false)
-  } else {
-    setEmpty(true)
-  };
+  // console.log(ordVal);
   const handleClose = () => {
     onClose(selectedValue);
   };
-  
+  useEffect(() => {
+    axios
+      .post("http://localhost:8000/api/orderUser", { userId: userId })
+      .then((res) => {
+        setOrdVal(res.data.result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  const deleteOrder = (e : any) => {
+    axios
+     .delete(`http://localhost:8000/api//order/${userId}`)
+     .then((res) => alert("Amjilttai ustgalaa"))
+     .catch((err) => console.log(err)
+      )
+  }
   return (
     <Dialog onClose={handleClose} open={open}>
-      <ul className="w-[400px] bg-white">
-        {empty ? (
-        ordVal.map((e) => {
+      <ul className="w-[400px] bg-white px-4 py-4">
+        {ordVal.map((e, index) => {
           return (
-            <li className="flex">
+            <li key={index} className=" flex gap-4 justify-between items-center">
               <div>{e.work}</div>
               <div>{e.date}</div>
               <div>{e.time}</div>
+              <button onClick={deleteOrder} className="rounded-lg bg-red-500 w-[60px] h-[30px] text-white">Устгах</button>
             </li>
-            )})) :
-        (
-        <div>Хоосон байна.</div>
-        )}
+          );
+        })}
+        {ordVal.length == 0 ? <div>Хоосон байна.</div> : ""}
       </ul>
-      
     </Dialog>
   );
 }
@@ -74,36 +72,37 @@ export const Header = () => {
   const handleClose = (value: string) => {
     setOpen(false);
   };
-  const [ordVal, setOrdVal] = useState({});
+  const [ordVal2, setOrdVal2] = useState([]);
   const { userId, setUserId } = useContext(userIdCon);
   useEffect(() => {
     userId ? "" : setUserId(localStorage.getItem("currentUserId"));
   }, []);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/order")
+      .post("http://localhost:8000/api/orderUser", { userId: userId })
       .then((res) => {
-        setOrdVal(res.data.result)
+        setOrdVal2(res.data.result);
       })
-      .catch((err) => {console.log(err);
-      })
-  })
-  // let lastScrollTop = 0;
-  // if (typeof window !== "undefined") {
-  //   window.addEventListener("scroll", function () {
-  //     const Navbar = document.getElementById("Navbar") as HTMLElement;
-  //     const scrollTop =
-  //       window.pageYOffset || document.documentElement.scrollTop;
-  //     if (scrollTop > lastScrollTop) {
-  //       Navbar.style.top = "-200px";
-  //     } else {
-  //       Navbar.style.top = "0px";
-  //       Navbar.style.color = "black";
-  //       Navbar.style.zIndex = "100";
-  //     }
-  //     lastScrollTop = scrollTop;
-  //   });
-  // }
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  let lastScrollTop = 0;
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", function () {
+      const Navbar = document.getElementById("Navbar") as HTMLElement;
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        Navbar.style.top = "-80px";
+      } else {
+        Navbar.style.top = "1px";
+        Navbar.style.color = "black";
+        Navbar.style.zIndex = "100";
+      }
+      lastScrollTop = scrollTop;
+    });
+  }
   return (
     <div
       className="fixed top-0 w-full bg-head text-white sticky top-0 z-[50] bg-black px-4 sm:px-8 z-0 ease-out duration-300"
@@ -149,26 +148,26 @@ export const Header = () => {
             {userId ? (
               <div className="flex justify-center items-center gap-5">
                 <div>
-                <button onClick={handleClickOpen}>
-                  <Badge badgeContent={ordVal.length} color="primary">
-                    <FiMail className="text-2xl"/>
-                  </Badge>
-                </button>
-                <SimpleDialog
-                  selectedValue=""
-                  open={open}
-                  onClose={handleClose}
-                />
+                  <button onClick={handleClickOpen}>
+                    <Badge badgeContent={ordVal2?.length} color="primary">
+                      <FiMail className="text-2xl" />
+                    </Badge>
+                  </button>
+                  <SimpleDialog
+                    selectedValue=""
+                    open={open}
+                    onClose={handleClose}
+                  />
                 </div>
-              <button
-                onClick={() => {
-                  localStorage.removeItem("currentUserId"), setUserId("");
-                }}
-                className="flex justify-between items-center text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded"
-              >
-                <BiLogOut className="text-2xl pt-1" />
-                <p>Гарах</p>
-              </button>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem("currentUserId"), setUserId("");
+                  }}
+                  className="flex justify-between items-center text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded"
+                >
+                  <BiLogOut className="text-2xl pt-1" />
+                  <p>Гарах</p>
+                </button>
               </div>
             ) : (
               <button className="text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded">
