@@ -1,35 +1,38 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
 import axios from "axios";
 
 export default function Booking() {
   const [timeData, setTimeData] = useState([]);
-  const [orderData, setOrderData] = useState({});
+  const [orderData, setOrderData] = useState([]);
   const [serVal, setSerVal] = useState("");
   const [orderVal, setOrderVal] = useState([]);
   const [mechVal, setMechVal] = useState<String>();
   const [dateVal, setDateVal] = useState("");
   const [test, setTest] = useState(false);
   const [time2, setTime2] = useState([]);
+  console.log(mechVal, dateVal, test);
 
   useEffect(() => {
     let newArr: any = [];
+    console.log(orderData);
     orderVal?.map((order) => {
       timeData?.map((e) => {
         if (e?.time != order?.time) {
           if (!newArr.includes(e.time)) {
-            newArr.push(e.time), setTime2(newArr);
+            newArr.push(e.time);
           }
         }
+        setTime2(newArr);
       });
     });
-  }, [orderVal]);
+  }, [orderData?.length > 1]);
   useEffect(() => {
     if (dateVal && mechVal) {
       setTest(true);
     }
-  }, [mechVal, dateVal]);
+  }, [mechVal]);
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/time")
@@ -66,11 +69,12 @@ export default function Booking() {
 
     setOrderData(data);
     if (orderData) {
+      console.log(orderData);
       axios
         .post("http://localhost:8000/api/order", orderData)
         .then((res) => {
-          alert("Amjilttai zahiallaa");
           console.log(res.data.result);
+          alert("Amjilttai zahiallaa");
         })
         .catch((err) => {
           console.log(err);
@@ -87,6 +91,8 @@ export default function Booking() {
       setSerVal("Смарт оношлогоо");
     }
   };
+  console.log(time2);
+
   return (
     <div>
       <div className="bg-black h-[100vh]">
@@ -160,10 +166,18 @@ export default function Booking() {
                     <option selected></option>
                     {serVal == "Тэнхлэг тохиргоо"
                       ? WA.map((e, index) => {
-                          return <option key={index}>{e}</option>;
+                          return (
+                            <option key={index} value={e}>
+                              {e}
+                            </option>
+                          );
                         })
                       : SD.map((e, index) => {
-                          return <option key={index}>{e}</option>;
+                          return (
+                            <option key={index} value={e}>
+                              {e}
+                            </option>
+                          );
                         })}
                   </select>
                 </div>

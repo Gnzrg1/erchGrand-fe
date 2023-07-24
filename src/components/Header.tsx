@@ -20,11 +20,9 @@ function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
   const [ordVal, setOrdVal] = useState([]);
   const { userId, setUserId } = useContext(userIdCon);
-  // const [empty, setEmpty] = useState(true);
   useEffect(() => {
     userId ? "" : setUserId(localStorage.getItem("currentUserId"));
   }, []);
-  // console.log(ordVal);
   const handleClose = () => {
     onClose(selectedValue);
   };
@@ -38,7 +36,6 @@ function SimpleDialog(props: SimpleDialogProps) {
         console.log(err);
       });
   }, []);
-
   return (
     <Dialog onClose={handleClose} open={open}>
       <ul className="w-[200px] bg-white">
