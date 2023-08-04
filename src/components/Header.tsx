@@ -78,32 +78,32 @@ export const Header = () => {
         console.log(err);
       });
   }, []);
-  let lastScrollTop = 0;
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", function () {
-      const Navbar = document.getElementById("Navbar") as HTMLElement;
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop) {
-        Navbar.style.top = "-80px";
-      } else {
-        Navbar.style.top = "1px";
-        Navbar.style.color = "black";
-        Navbar.style.zIndex = "100";
-      }
-      lastScrollTop = scrollTop;
-    });
-  }
+  // let lastScrollTop = 0;
+  // if (typeof window !== "undefined") {
+  //   window.addEventListener("scroll", function () {
+  //     const Navbar = document.getElementById("Navbar") as HTMLElement;
+  //     const scrollTop =
+  //       window.pageYOffset || document.documentElement.scrollTop;
+  //     if (scrollTop > lastScrollTop) {
+  //       Navbar.style.top = "-80px";
+  //     } else {
+  //       Navbar.style.top = "1px";
+  //       Navbar.style.color = "black";
+  //       Navbar.style.zIndex = "100";
+  //     }
+  //     lastScrollTop = scrollTop;
+  //   });
+  // }
   return (
     <div
       className="fixed top-0 w-full bg-head text-white sticky top-0 z-[50] bg-black px-4 sm:px-8 z-0 ease-out duration-300"
       id="Navbar"
     >
       <div className="w-full py-2 border-b border-b-white/[.15] flex items-center justify-between">
-        <div className="flex items-center gap-7 hidden md:flex">
+        <div className="flex items-center  gap-7 hidden md:flex">
           <Link href="/">
             <Image
-              className="hover:animate-spin w-10 h-10"
+              className="hover:animate-spin w-11 h-11"
               src={Erchlogo}
               alt="ErchLogo"
             />

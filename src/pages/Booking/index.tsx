@@ -12,24 +12,26 @@ export default function Booking() {
   const [dateVal, setDateVal] = useState("");
   const [test, setTest] = useState(false);
   const [time2, setTime2] = useState([]);
-  console.log(mechVal, dateVal, test);
+  // console.log(mechVal, dateVal, test);
 
   useEffect(() => {
     let newArr: any = [];
     console.log(orderData);
-    orderVal?.map((order) => {
-      timeData?.map((e) => {
-        if (e?.time != order?.time) {
-          if (!newArr.includes(e.time)) {
+    orderVal?.map(
+      (order) => {
+        timeData?.map((e) => {
+          if (e?.time != order?.time && !newArr.includes(e.time)) {
             newArr.push(e.time);
           }
-        }
-        setTime2(newArr);
-      });
-    });
+          setTime2(newArr);
+          console.log(newArr);
+        });
+      },
+      [test]
+    );
   }, [orderData?.length > 1]);
   useEffect(() => {
-    if (dateVal && mechVal) {
+    if (dateVal != "" && mechVal != "") {
       setTest(true);
     }
   }, [mechVal]);
@@ -91,7 +93,7 @@ export default function Booking() {
       setSerVal("Смарт оношлогоо");
     }
   };
-  console.log(time2);
+  // console.log(time2);
 
   return (
     <div>
@@ -195,12 +197,12 @@ export default function Booking() {
                     className="text-black border border-border-2 w-full py-[12px] px-[22px] rounded-lg focus:outline-none focus:ring-2 focus:ring-color-1 text-text text-md-regular"
                   >
                     <option selected></option>
-                    {orderVal?.length > 1
-                      ? time2?.map((e, index) => {
+                    {test
+                      ? time2.map((e, index) => {
                           return <option key={index}>{e}</option>;
                         })
                       : timeData.map((e, index) => {
-                          return <option key={index}>{e.time}</option>;
+                          return <option key={index}>{e?.time}</option>;
                         })}
                   </select>
                 </div>
