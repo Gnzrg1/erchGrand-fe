@@ -35,7 +35,7 @@ export default function LandingPage() {
 
             <Link
               href={userId ? "/Booking" : "/Login"}
-              className="w-[200px] h-[150px] text-white bg-slate-500 text-[1.5rem] flex flex-col justify-center items-center rounded-[20px] hover:text-slate-300"
+              className="w-[200px] h-[150px] text-white bg-slate-500 text-[1.5rem] hidden md:flex flex-col justify-center items-center rounded-[20px] hover:text-slate-300"
             >
               <TbCalendarTime className="text-[3rem]" />
               Цаг захиалах
