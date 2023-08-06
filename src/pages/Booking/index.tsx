@@ -17,19 +17,18 @@ export default function Booking() {
   useEffect(() => {
     let newArr: any = [];
     console.log(orderData);
-    orderVal?.map(
-      (order) => {
-        timeData?.map((e) => {
-          if (e?.time != order?.time && !newArr.includes(e.time)) {
+    orderVal?.map((order) => {
+      timeData?.map((e) => {
+        if (e?.time != order?.time && !newArr.includes(e.time)) {
+          if (e?.date != order?.date) {
             newArr.push(e.time);
           }
-          setTime2(newArr);
-          console.log(newArr);
-        });
-      },
-      [test]
-    );
-  }, [orderData?.length > 1]);
+        }
+        setTime2(newArr);
+        console.log(newArr);
+      });
+    });
+  }, [orderVal.length > 1]);
   useEffect(() => {
     if (dateVal != "" && mechVal != "") {
       setTest(true);
@@ -41,14 +40,19 @@ export default function Booking() {
       .then((res) => setTimeData(res.data.result))
       .catch((err) => console.log(err));
   }, []);
+
   useEffect(() => {
-    axios
-      .post("http://localhost:8000/api/orders", {
-        date: dateVal,
-        Mechanic: mechVal,
-      })
-      .then((res) => setOrderVal(res.data.result))
-      .catch((err) => console.log(err));
+    if (test) {
+      console.log(test);
+
+      axios
+        .post("http://localhost:8000/api/orders", {
+          date: dateVal,
+          Mechanic: mechVal,
+        })
+        .then((res) => setOrderVal(res.data.result))
+        .catch((err) => console.log(err));
+    }
   }, [test]);
   const today = new Date();
   const numberOfDaysToAdd = 7;
