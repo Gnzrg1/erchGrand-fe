@@ -130,7 +130,7 @@ export const Header = () => {
             />
           </Link>
         </div>
-        <div className="hidden w-2/4 md:flex">
+        <div className="hidden w-2/4 lg:flex">
           <nav className="w-full">
             <ul className="flex items-center justify-evenly text-md-regular gap-4">
               <li className="hover:text-white/70 text-white duration-300">
@@ -175,7 +175,7 @@ export const Header = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem className="gap-2" onClick={handleClose1}><CgProfile/> Хувийн мэдээлэл</MenuItem>
+        <MenuItem onClick={handleClose1}><Link href="/Profile" className="flex justify-center items-center gap-2"><CgProfile/> Хувийн мэдээлэл</Link></MenuItem>
         <MenuItem onClick={handleClose1}>
                   <button onClick={handleClickOpen}>
                     <Badge badgeContent={ordVal2?.length} color="primary" className="flex justify-center items-center gap-2">
@@ -189,6 +189,7 @@ export const Header = () => {
                     onClose={handleClose}
                   />
                 </MenuItem>
+        <hr/>
         <MenuItem onClick={handleClose1}>
         <button
                   onClick={() => {
