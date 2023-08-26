@@ -18,7 +18,7 @@ export default function LandingPage() {
       <Header />
       <div className="static top-0 w-full flex flex-col gap-12 md:gap-24 bg-black px-4 sm:px-8">
         <div
-          className="bg-gradient-to-r from-gray-900 to-gray-700"
+          className="bg-gradient-to-r from-gray-900 to-gray-700 hidden md:flex"
           style={{ borderRadius: "20px" }}
         >
           <div
@@ -43,7 +43,6 @@ export default function LandingPage() {
           </div>
         </div>
         <Section2 />
-        x``
         <div
           className="w-full flex flex-col gap-4 py-10 bg-gradient-to-r from-gray-900 to-gray-700  px-4 sm:px-16"
           id="serviceSection"
