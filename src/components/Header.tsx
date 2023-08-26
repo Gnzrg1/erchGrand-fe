@@ -130,7 +130,7 @@ export const Header = () => {
             />
           </Link>
         </div>
-        <div className="hidden w-2/4 md:flex">
+        <div className="hidden w-2/4 lg:flex">
           <nav className="w-full">
             <ul className="flex items-center justify-evenly text-md-regular gap-4">
               <li className="hover:text-white/70 text-white duration-300">
@@ -149,10 +149,10 @@ export const Header = () => {
             </ul>
           </nav>
         </div>
-        <div className="flex md:hidden md:1/3 w-full justify-between">
+        <div className="flex justify-between">
           <Link
               href={userId ? "/Booking" : "/Login"}
-              className="flex justify-center items-center gap-2 text-white"
+              className="flex md:hidden justify-center items-center gap-2 text-white"
             >
               <TbCalendarTime/>
               Цаг захиалах
@@ -164,7 +164,9 @@ export const Header = () => {
         aria-expanded={open1 ? 'true' : undefined}
         onClick={handleClick}
         >
-        <BsList className="text-white text-2xl"/>
+        <Badge badgeContent={ordVal2?.length} color="primary" className="flex justify-center items-center gap-2">
+          <CgProfile className="text-white text-2xl"/>
+        </Badge>
       </Button>
       <Menu
         id="basic-menu"
@@ -175,7 +177,7 @@ export const Header = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem className="gap-2" onClick={handleClose1}><CgProfile/> Хувийн мэдээлэл</MenuItem>
+        <MenuItem onClick={handleClose1}><Link href="/Profile" className="flex justify-center items-center gap-2"><CgProfile/> Хувийн мэдээлэл</Link></MenuItem>
         <MenuItem onClick={handleClose1}>
                   <button onClick={handleClickOpen}>
                     <Badge badgeContent={ordVal2?.length} color="primary" className="flex justify-center items-center gap-2">
@@ -189,6 +191,7 @@ export const Header = () => {
                     onClose={handleClose}
                   />
                 </MenuItem>
+        <hr/>
         <MenuItem onClick={handleClose1}>
         <button
                   onClick={() => {
@@ -204,40 +207,6 @@ export const Header = () => {
       </div>):  (<button className="text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded">
                 <Link href="/Login">Нэвтрэх</Link>
               </button>)}
-        </div>
-
-        <div className="hidden md:flex items-center justify-end gap-7">
-          <div className="flex gap-6">
-            {userId ? (
-              <div className="flex justify-center items-center gap-5">
-                <div>
-                  <button onClick={handleClickOpen}>
-                    <Badge badgeContent={ordVal2?.length} color="primary">
-                      <FiMail className="text-2xl text-white" />
-                    </Badge>
-                  </button>
-                  <SimpleDialog
-                    selectedValue=""
-                    open={open}
-                    onClose={handleClose}
-                  />
-                </div>
-                <button
-                  onClick={() => {
-                    localStorage.removeItem("currentUserId"), setUserId("");
-                  }}
-                  className="flex justify-between items-center text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded"
-                >
-                  <BiLogOut className="text-2xl pt-1" />
-                  <p>Гарах</p>
-                </button>
-              </div>
-            ) : (
-              <button className="text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded">
-                <Link href="/Login">Нэвтрэх</Link>
-              </button>
-            )}
-          </div>
         </div>
       </div>
     </div>
