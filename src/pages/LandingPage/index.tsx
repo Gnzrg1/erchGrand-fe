@@ -59,7 +59,7 @@ export default function LandingPage() {
               <div className="w-full md:w-2/4">
                 <div className="flex justify-start items-center gap-4 text-white">
                   <VscTools style={{ fontSize: "6rem" }}></VscTools>
-                  <div style={{ fontSize: "20px" }}>Сайн багаж</div>
+                  <div style={{ fontSize: "20px" }}>Сайн багаж, төхөөрөмж</div>
                 </div>
               </div>
             </div>

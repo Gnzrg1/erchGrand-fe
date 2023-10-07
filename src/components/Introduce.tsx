@@ -17,7 +17,7 @@ export const Introduce = () => {
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="bg-slate-500 w-full lg:w-1/4 flex flex-col justify-center items-center" style={{height:"40vh", borderRadius:"20px"}}>
           <h2 className="text-black font-serif font-semibold" style={{fontSize:"90px"}}>20k</h2>
-          <p style={{fontSize:"20px"}}>Хүмүүс нийтдээ үйлчлүүлсэн</p>
+          <p className="text-black" style={{fontSize:"20px"}}>Хүмүүс нийтдээ үйлчлүүлсэн</p>
         </div>
         <div className="w-full lg:w-1/4" id="intro2" style={{height:"40vh"}}></div>
         <div className="w-full lg:w-2/4" id="intro3" style={{height:"40vh"}}></div>

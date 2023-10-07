@@ -121,7 +121,7 @@ export const Header = () => {
       id="Navbar"
     >
       <div className="w-full py-2 border-b border-b-white/[.15] flex items-center justify-between">
-        <div className="flex items-center  gap-7 hidden md:flex">
+        <div className="flex items-center  gap-7 flex">
           <Link href="/">
             <Image
               className="hover:animate-spin w-11 h-11"
@@ -149,7 +149,7 @@ export const Header = () => {
             </ul>
           </nav>
         </div>
-        <div className="flex justify-between">
+        <div className="flex gap-2">
           <Link
               href={userId ? "/Booking" : "/Login"}
               className="flex md:hidden justify-center items-center gap-2 text-white"
@@ -157,6 +157,16 @@ export const Header = () => {
               <TbCalendarTime/>
               Цаг захиалах
           </Link>
+          <button onClick={handleClickOpen}>
+                    <Badge badgeContent={ordVal2?.length} color="primary" className="flex justify-center items-center gap-2">
+                      <FiMail className="text-white text-xl" />
+                    </Badge>
+                  </button>
+                  <SimpleDialog
+                    selectedValue=""
+                    open={open}
+                    onClose={handleClose}
+                  />
           {userId ? (<div><Button
         id="basic-button"
         aria-controls={open1 ? 'basic-menu' : undefined}
@@ -164,9 +174,8 @@ export const Header = () => {
         aria-expanded={open1 ? 'true' : undefined}
         onClick={handleClick}
         >
-        <Badge badgeContent={ordVal2?.length} color="primary" className="flex justify-center items-center gap-2">
+          
           <CgProfile className="text-white text-2xl"/>
-        </Badge>
       </Button>
       <Menu
         id="basic-menu"
@@ -178,19 +187,7 @@ export const Header = () => {
         }}
       >
         <MenuItem onClick={handleClose1}><Link href="/Profile" className="flex justify-center items-center gap-2"><CgProfile/> Хувийн мэдээлэл</Link></MenuItem>
-        <MenuItem onClick={handleClose1}>
-                  <button onClick={handleClickOpen}>
-                    <Badge badgeContent={ordVal2?.length} color="primary" className="flex justify-center items-center gap-2">
-                      <FiMail className="text-black" />
-                      Авсан цаг
-                    </Badge>
-                  </button>
-                  <SimpleDialog
-                    selectedValue=""
-                    open={open}
-                    onClose={handleClose}
-                  />
-                </MenuItem>
+        
         <hr/>
         <MenuItem onClick={handleClose1}>
         <button
