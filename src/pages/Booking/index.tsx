@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default function Booking() {
   const [timeData, setTimeData] = useState([]);
-  const [orderData, setOrderData] = useState([]);
+  const [orderData, setOrderData] = useState();
   const [serVal, setSerVal] = useState("");
   const [orderVal, setOrderVal] = useState([]);
   const [mechVal, setMechVal] = useState<String>();
@@ -13,27 +13,12 @@ export default function Booking() {
   const [test, setTest] = useState(false);
   const [time2, setTime2] = useState([]);
   // console.log(mechVal, dateVal, test);
-
-  useEffect(() => {
-    let newArr: any = [];
-    console.log(orderData);
-    orderVal?.map((order) => {
-      timeData?.map((e) => {
-        if (e?.time != order?.time && !newArr.includes(e.time)) {
-          if (e?.date != order?.date) {
-            newArr.push(e.time);
-          }
-        }
-        setTime2(newArr);
-        console.log(newArr);
-      });
-    });
-  }, [orderVal.length > 1]);
   useEffect(() => {
     if (dateVal != "" && mechVal != "") {
       setTest(true);
     }
   }, [mechVal]);
+
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/time")
@@ -50,7 +35,18 @@ export default function Booking() {
           date: dateVal,
           Mechanic: mechVal,
         })
-        .then((res) => setOrderVal(res.data.result))
+        .then((res) => {
+          setOrderVal(res.data.result.time);
+
+          timeData.map((e: any) => {
+            let newArr = e.includes(
+              orderVal.map((i: any) => {
+                return i;
+              })
+            );
+            setTime2(newArr);
+          });
+        })
         .catch((err) => console.log(err));
     }
   }, [test]);
@@ -62,7 +58,7 @@ export default function Booking() {
   const nextWeekVal = new Date(nextWeek).toISOString().split("T")[0];
   const bookTime = async (event: any) => {
     event.preventDefault();
-    const data = {
+    const data: any = {
       date: dateVal,
       work: event.target.services.value,
       Mechanic: mechVal,
@@ -201,7 +197,7 @@ export default function Booking() {
                     className="text-black border border-border-2 w-full py-[12px] px-[22px] rounded-lg focus:outline-none focus:ring-2 focus:ring-color-1 text-text text-md-regular"
                   >
                     <option selected></option>
-                    {test
+                    {orderVal?.length > 0
                       ? time2.map((e, index) => {
                           return <option key={index}>{e}</option>;
                         })

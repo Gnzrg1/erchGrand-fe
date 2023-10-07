@@ -10,9 +10,9 @@ import Badge from "@mui/material/Badge";
 import { FiMail } from "react-icons/fi";
 import axios from "axios";
 import Dialog from "@mui/material/Dialog";
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import { TbCalendarTime } from "react-icons/tb";
 
 export interface SimpleDialogProps {
@@ -41,23 +41,30 @@ function SimpleDialog(props: SimpleDialogProps) {
         console.log(err);
       });
   }, []);
-  const deleteOrder = (e : any) => {
+  const deleteOrder = (e: any) => {
     axios
-     .delete(`http://localhost:8000/api//order/${userId}`)
-     .then((res) => alert("Amjilttai ustgalaa"))
-     .catch((err) => console.log(err)
-      )
-  }
+      .delete(`http://localhost:8000/api//order/${userId}`)
+      .then((res) => alert("Amjilttai ustgalaa"))
+      .catch((err) => console.log(err));
+  };
   return (
     <Dialog onClose={handleClose} open={open}>
       <ul className="w-[400px] bg-white px-4 py-4">
         {ordVal.map((e, index) => {
           return (
-            <li key={index} className=" flex gap-4 justify-between items-center">
+            <li
+              key={index}
+              className=" flex gap-4 justify-between items-center"
+            >
               <div>{e.work}</div>
               <div>{e.date}</div>
               <div>{e.time}</div>
-              <button onClick={deleteOrder} className="rounded-lg bg-red-500 w-[60px] h-[30px] text-white">Устгах</button>
+              <button
+                onClick={deleteOrder}
+                className="rounded-lg bg-red-500 w-[60px] h-[30px] text-white"
+              >
+                Устгах
+              </button>
             </li>
           );
         })}
@@ -93,7 +100,7 @@ export const Header = () => {
     axios
       .post("http://localhost:8000/api/orderUser", { userId: userId })
       .then((res) => {
-       setOrdVal2(res.data.result);
+        setOrdVal2(res.data.result);
       })
       .catch((err) => {
         console.log(err);
@@ -151,36 +158,53 @@ export const Header = () => {
         </div>
         <div className="flex justify-between">
           <Link
-              href={userId ? "/Booking" : "/Login"}
-              className="flex md:hidden justify-center items-center gap-2 text-white"
-            >
-              <TbCalendarTime/>
-              Цаг захиалах
+            href={userId ? "/Booking" : "/Login"}
+            className="flex md:hidden justify-center items-center gap-2 text-white"
+          >
+            <TbCalendarTime />
+            Цаг захиалах
           </Link>
-          {userId ? (<div><Button
-        id="basic-button"
-        aria-controls={open1 ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open1 ? 'true' : undefined}
-        onClick={handleClick}
-        >
-        <Badge badgeContent={ordVal2?.length} color="primary" className="flex justify-center items-center gap-2">
-          <CgProfile className="text-white text-2xl"/>
-        </Badge>
-      </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open1}
-        onClose={handleClose1}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <MenuItem onClick={handleClose1}><Link href="/Profile" className="flex justify-center items-center gap-2"><CgProfile/> Хувийн мэдээлэл</Link></MenuItem>
-        <MenuItem onClick={handleClose1}>
+          {userId ? (
+            <div>
+              <Button
+                id="basic-button"
+                aria-controls={open1 ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open1 ? "true" : undefined}
+                onClick={handleClick}
+              >
+                <Badge
+                  badgeContent={ordVal2?.length}
+                  color="primary"
+                  className="flex justify-center items-center gap-2"
+                >
+                  <CgProfile className="text-white text-2xl" />
+                </Badge>
+              </Button>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open1}
+                onClose={handleClose1}
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
+              >
+                <MenuItem onClick={handleClose1}>
+                  <Link
+                    href="/Profile"
+                    className="flex justify-center items-center gap-2"
+                  >
+                    <CgProfile /> Хувийн мэдээлэл
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose1}>
                   <button onClick={handleClickOpen}>
-                    <Badge badgeContent={ordVal2?.length} color="primary" className="flex justify-center items-center gap-2">
+                    <Badge
+                      badgeContent={ordVal2?.length}
+                      color="primary"
+                      className="flex justify-center items-center gap-2"
+                    >
                       <FiMail className="text-black" />
                       Авсан цаг
                     </Badge>
@@ -191,22 +215,25 @@ export const Header = () => {
                     onClose={handleClose}
                   />
                 </MenuItem>
-        <hr/>
-        <MenuItem onClick={handleClose1}>
-        <button
-                  onClick={() => {
-                    localStorage.removeItem("currentUserId"), setUserId("");
-                  }}
-                  className="flex justify-between items-center text-black gap-2"
-                >
-                  <BiLogOut className="" />
-                  <div>Гарах</div>
-                </button>
-        </MenuItem>
-      </Menu>
-      </div>):  (<button className="text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded">
-                <Link href="/Login">Нэвтрэх</Link>
-              </button>)}
+                <hr />
+                <MenuItem onClick={handleClose1}>
+                  <button
+                    onClick={() => {
+                      localStorage.removeItem("currentUserId"), setUserId("");
+                    }}
+                    className="flex justify-between items-center text-black gap-2"
+                  >
+                    <BiLogOut className="" />
+                    <div>Гарах</div>
+                  </button>
+                </MenuItem>
+              </Menu>
+            </div>
+          ) : (
+            <button className="text-head rounded-lg px-5 py-2 text-md-regular hover:bg-slate-600 duration-300 bg-none text-white font-bold py-2 px-4 rounded">
+              <Link href="/Login">Нэвтрэх</Link>
+            </button>
+          )}
         </div>
       </div>
     </div>
