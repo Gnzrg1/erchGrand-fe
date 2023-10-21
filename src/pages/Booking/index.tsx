@@ -4,10 +4,10 @@ import { IoMdArrowBack } from "react-icons/io";
 import axios from "axios";
 
 export default function Booking() {
-  // const [timeData, setTimeData] = useState([]);
+  const [timeData, setTimeData] = useState([]);
   const [orderData, setOrderData] = useState();
   const [serVal, setSerVal] = useState("");
-  const [orderVal, setOrderVal] = useState<any>();
+  const [orderVal, setOrderVal] = useState([]);
   const [mechVal, setMechVal] = useState<String>();
   const [dateVal, setDateVal] = useState("");
   const [test, setTest] = useState(false);
@@ -25,33 +25,45 @@ export default function Booking() {
       .then((res) => setTime2(res.data.result))
       .catch((err) => console.log(err));
   }, []);
-
   useEffect(() => {
-    console.log(test);
-    axios
-      .post("http://localhost:8000/api/orders", {
-        date: dateVal,
-        Mechanic: mechVal,
-      })
-      .then((res) => {
-        setOrderVal(res.data.result.time);
-      })
-      .catch((err) => console.log(err));
+    if (test === true) {
+      console.log(test);
+      axios
+        .post("http://localhost:8000/api/orders", {
+          date: dateVal,
+          Mechanic: mechVal,
+        })
+        .then((res) => {
+          setOrderVal(res.data.result);
+        })
+        .catch((err) => console.log(err));
+    }
   }, [test]);
 
   useEffect(() => {
-    time2.map((e: any) => {
-      let newArr: any = e.time.includes(
+    const newArr: any = [];
+    if (orderVal.length >= 1) {
+      time2.filter((e: any, index) => {
         orderVal.map((i: any) => {
-          return i;
-        })
-      );
-      setTime2(newArr);
-    });
-    console.log("hi");
+          if (e.time != i.time) {
+            return newArr.push(e.time);
+          }
+        });
+      });
+    }
+    setTimeData(newArr);
+    // time2.map((e: any) => {
+    //   let newArr: any = e.time.includes(
+    //     orderVal?.map((i: any) => {
+    //       return i.time;
+    //     })
+    //   );
+    //   setTime2(newArr);
+    // });
+    // console.log("hi");
   }, [orderVal]);
   // console.log(time2);
-  // console.log(timeData);
+  console.log(timeData);
   // console.log(orderVal);
 
   const today = new Date();
@@ -201,9 +213,30 @@ export default function Booking() {
                     className="text-black border border-border-2 w-full py-[12px] px-[22px] rounded-lg focus:outline-none focus:ring-2 focus:ring-color-1 text-text text-md-regular"
                   >
                     <option selected></option>
-                    {time2?.map((e, index) => {
-                      return <option key={index}>{e?.time}</option>;
+                    {timeData.map((e, index) => {
+                      return <option key={index}>{e}</option>;
                     })}
+                    {/* <option>10:00</option>
+                    <option>09:00</option> */}
+                    {/* {time2.map((e, index): any => {
+                      orderVal.map((i) => {
+                        if (e.time != i.time) {
+                          return <option key={index}>{e.time}</option>;
+                        }
+                      });
+                    })} */}
+                    {/* {time2.filter((e: any, index) => {
+                      orderVal.map((i: any) => {
+                        if (e.time != i.time) {
+                          const newArr: any = [];
+                          newArr.push(e.time);
+                          return setTimeData(newArr);
+                        }
+                      });
+                    })} */}
+                    {/* {time2.map((e: any, index: number) => {
+                      return <option key={index}>{e?.time}</option>;
+                    })} */}
                     {/* {orderVal?.length > 0
                       ? time2.map((e, index) => {
                           return <option key={index}>{e}</option>;
