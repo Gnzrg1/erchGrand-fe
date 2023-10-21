@@ -51,7 +51,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   return (
     <Dialog onClose={handleClose} open={open}>
       <ul className="w-[400px] bg-white px-4 py-4">
-        {ordVal.map((e, index) => {
+        {ordVal?.map((e, index) => {
           return (
             <li key={index} className=" flex gap-4 justify-between items-center">
               <div>{e.work}</div>
@@ -61,7 +61,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             </li>
           );
         })}
-        {ordVal.length == 0 ? <div>Хоосон байна.</div> : ""}
+        {ordVal?.length == 0 ? <div>Хоосон байна.</div> : ""}
       </ul>
     </Dialog>
   );
@@ -157,16 +157,6 @@ export const Header = () => {
               <TbCalendarTime/>
               Цаг захиалах
           </Link>
-          <button onClick={handleClickOpen}>
-                    <Badge badgeContent={ordVal2?.length} color="primary" className="flex justify-center items-center gap-2">
-                      <FiMail className="text-white text-xl" />
-                    </Badge>
-                  </button>
-                  <SimpleDialog
-                    selectedValue=""
-                    open={open}
-                    onClose={handleClose}
-                  />
           {userId ? (<div><Button
         id="basic-button"
         aria-controls={open1 ? 'basic-menu' : undefined}
@@ -187,7 +177,19 @@ export const Header = () => {
         }}
       >
         <MenuItem onClick={handleClose1}><Link href="/Profile" className="flex justify-center items-center gap-2"><CgProfile/> Хувийн мэдээлэл</Link></MenuItem>
-        
+        <MenuItem className="flex">
+        <button className="flex justify-center items-center gap-2" onClick={handleClickOpen}>
+                    <Badge badgeContent={ordVal2?.length} color="primary" >
+                      <FiMail className="text-black" />
+                    </Badge>
+                    Авсан цаг
+                  </button>
+                  <SimpleDialog
+                    selectedValue=""
+                    open={open}
+                    onClose={handleClose}
+                  />
+        </MenuItem>
         <hr/>
         <MenuItem onClick={handleClose1}>
         <button
