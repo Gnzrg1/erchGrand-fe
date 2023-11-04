@@ -41,9 +41,11 @@ function SimpleDialog(props: SimpleDialogProps) {
         console.log(err);
       });
   }, []);
-  const deleteOrder = (e : any) => {
+  const deleteOrder = (_id) => {
+    console.log(_id);
+    
     axios
-     .delete(`http://localhost:8000/api//order/${userId}`)
+     .delete(`http://localhost:8000/api//order/${_id}`)
      .then((res) => alert("Amjilttai ustgalaa"))
      .catch((err) => console.log(err)
       )
@@ -57,7 +59,7 @@ function SimpleDialog(props: SimpleDialogProps) {
               <div>{e.work}</div>
               <div>{e.date}</div>
               <div>{e.time}</div>
-              <button onClick={deleteOrder} className="rounded-lg bg-red-500 w-[60px] h-[30px] text-white">Устгах</button>
+              <button onClick={(e : any)=> deleteOrder(e?._id)} className="rounded-lg bg-red-500 w-[60px] h-[30px] text-white">Устгах</button>
             </li>
           );
         })}
