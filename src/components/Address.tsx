@@ -2,9 +2,19 @@ import Link from "next/link";
 import React, { useState, useContext } from "react";
 import { FiFacebook, FiMapPin } from "react-icons/fi";
 import axios from "axios";
+import { log } from "util";
 
 export default function Address() {
-  axios.get("http://localhost:8000/api/comment");
+  const [comm, setComm] = useState("");
+  const postCom = () => {
+    axios
+      .post("http://localhost:8000/api/comment", {
+        userId: localStorage.getItem("currentUserId"),
+        comment: comm,
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
   return (
     <div
       className="sm:px-16 flex flex-col md:flex-row gap-6 pb-12 md:pb-24"
@@ -46,13 +56,15 @@ export default function Address() {
         </div>
         <div className="flex flex-col gap-2">
           <textarea
-            className="placeholder:text-slate-300 block w-full md:w-3/4 lg:w-2/4 bg-white border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+            className="placeholder:text-slate-300 block w-full md:w-3/4 lg:w-2/4 bg-white border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm text-black"
             placeholder="Сэтгэгдэл..."
             name="search"
+            onChange={(e) => setComm(e.target.value)}
           />
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
             style={{ width: "150px" }}
+            onClick={postCom}
           >
             Submit
           </button>
