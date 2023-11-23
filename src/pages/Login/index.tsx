@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { userIdCon } from "@/Context/userIdContext";
 
 export default function Index() {
-  const [emailVal, setEmailVal] = useState("");
+  const [phoneVal, setPhoneVal] = useState(0);
   const [passVal, setPassVal] = useState("");
   const [userData, setUserData] = useState({});
   const { setUserId } = useContext(userIdCon);
@@ -16,7 +16,7 @@ export default function Index() {
   const userLogin = () => {
     axios
       .post("http://localhost:8000/api/login", {
-        email: emailVal,
+        phone: phoneVal,
         password: passVal,
       })
       .then((res) => {
@@ -45,8 +45,9 @@ export default function Index() {
           <input
             //   onChange={(e) => setLogEmail(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg block w-full sm:2/3 md:w-2/4 lg:w-1/3 p-2.5 active:border-sky-400"
-            placeholder="Имайл"
-            onChange={(e) => setEmailVal(e.target.value)}
+            placeholder="Утасны дугаар"
+            type="Phone"
+            onChange={(e) => setPhoneVal(e.target.value)}
           />
           <input
             //   onChange={(e) => setLogPassword(e.target.value)}

@@ -26,23 +26,22 @@ export default function Booking() {
       .catch((err) => console.log(err));
   }, []);
   useEffect(() => {
-    if (test === true) {
-      console.log(test);
-      axios
-        .post("http://localhost:8000/api/orders", {
-          date: dateVal,
-          Mechanic: mechVal,
-        })
-        .then((res) => {
-          setOrderVal(res.data.result);
-        })
-        .catch((err) => console.log(err));
-    }
-  }, [test]);
+    console.log(test);
+    axios
+      .post("http://localhost:8000/api/orders", {
+        date: dateVal,
+        Mechanic: mechVal,
+      })
+      .then((res) => {
+        setOrderVal(res.data.result);
+      })
+      .catch((err) => console.log(err));
+  }, [test === true]);
 
   useEffect(() => {
+    setTimeData([]);
     const newArr: any = [];
-    if (orderVal.length >= 1) {
+    if (orderVal?.length >= 1) {
       time2.filter((e: any, index) => {
         orderVal.map((i: any) => {
           if (e.time != i.time) {
@@ -213,9 +212,18 @@ export default function Booking() {
                     className="text-black border border-border-2 w-full py-[12px] px-[22px] rounded-lg focus:outline-none focus:ring-2 focus:ring-color-1 text-text text-md-regular"
                   >
                     <option selected></option>
-                    {timeData.map((e, index) => {
+
+                    {/* {timeData.map((e, index) => {
                       return <option key={index}>{e}</option>;
-                    })}
+                    })} */}
+
+                    {timeData.length >= 1
+                      ? timeData.map((e, index) => {
+                          return <option key={index}>{e}</option>;
+                        })
+                      : time2.map((e, index) => {
+                          return <option key={index}>{e?.time}</option>;
+                        })}
                     {/* <option>10:00</option>
                     <option>09:00</option> */}
                     {/* {time2.map((e, index): any => {
