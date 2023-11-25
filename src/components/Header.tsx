@@ -166,8 +166,9 @@ export const Header = () => {
         aria-expanded={open1 ? 'true' : undefined}
         onClick={handleClick}
         >
-          
+        <Badge badgeContent={ordVal2?.length} color="primary" >
           <CgProfile className="text-white text-2xl"/>
+          </Badge>  
       </Button>
       <Menu
         id="basic-menu"
