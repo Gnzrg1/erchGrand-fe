@@ -71,7 +71,7 @@ export default function Address() {
         </div>
       </div>
       <div
-        className="w-full md:w-2/4 h-[60vh] rounded-[20px]"
+        className="md:flex hidden w-2/4 h-[60vh] rounded-[20px]"
         id="mapPicture"
       ></div>
     </div>
