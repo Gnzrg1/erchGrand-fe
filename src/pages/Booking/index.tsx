@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
 import axios from "axios";
-
+import { useRouter } from "next/router";
 export default function Booking() {
   const [orderData, setOrderData] = useState();
   const [serVal, setSerVal] = useState("");
@@ -10,6 +10,7 @@ export default function Booking() {
   const [mechVal, setMechVal] = useState<String>();
   const [dateVal, setDateVal] = useState("");
   const [test, setTest] = useState(false);
+  const route = useRouter();
 
   useEffect(() => {
     if (dateVal != "" && mechVal != "") {
@@ -82,6 +83,7 @@ export default function Booking() {
         .then((res) => {
           console.log(res.data.result);
           alert("Амжилттай захиаллаа");
+          route.push("/");
         })
         .catch((err) => {
           console.log(err);
