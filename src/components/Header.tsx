@@ -51,23 +51,26 @@ function SimpleDialog(props: SimpleDialogProps) {
   };
   return (
     <Dialog onClose={handleClose} open={open}>
-      <ul className="w-[400px] bg-white px-4 py-4">
+      <ul className="w-[500px] bg-white px-4 py-4 flex flex-col gap-4">
         {ordVal?.map((e, index) => {
           return (
-            <li
-              key={index}
-              className=" flex gap-4 justify-between items-center"
-            >
-              <div>{e.work}</div>
-              <div>{e.date}</div>
-              <div>{e.time}</div>
-              <button
-                onClick={(e: any) => deleteOrder(e?._id)}
-                className="rounded-lg bg-red-500 w-[60px] h-[30px] text-white"
+            <div>
+              <li
+                key={index}
+                className=" flex gap-4 justify-between items-center"
               >
-                Устгах
-              </button>
-            </li>
+                <div>{e.work}</div>
+                <div>{e.date}</div>
+                <div>{e.time}</div>
+                <button
+                  onClick={(e: any) => deleteOrder(e?._id)}
+                  className="rounded-lg bg-red-500 w-[60px] h-[30px] text-white"
+                >
+                  Устгах
+                </button>
+              </li>
+              <hr></hr>
+            </div>
           );
         })}
         {ordVal?.length == 0 ? <div>Хоосон байна.</div> : ""}
