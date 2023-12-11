@@ -90,6 +90,7 @@ export default function Booking() {
         });
     }
   };
+  //hiel hih
   const services = ["Тэнхлэг тохиргоо", "Смарт оношлогоо"];
   const WA = ["Сайнбилэг", "Мөнхбат", "Баянмөнх"];
   const SD = ["Шижир", "Сайнбилэг", "Баянмөнх"];

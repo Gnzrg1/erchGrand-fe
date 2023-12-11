@@ -54,11 +54,8 @@ function SimpleDialog(props: SimpleDialogProps) {
       <ul className="w-[500px] bg-white px-4 py-4 flex flex-col gap-4">
         {ordVal?.map((e, index) => {
           return (
-            <div>
-              <li
-                key={index}
-                className=" flex gap-4 justify-between items-center"
-              >
+            <div key={index}>
+              <li className=" flex gap-4 justify-between items-center">
                 <div>{e.work}</div>
                 <div>{e.date}</div>
                 <div>{e.time}</div>
@@ -111,22 +108,22 @@ export const Header = () => {
         console.log(err);
       });
   }, []);
-  let lastScrollTop = 0;
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", function () {
-      const Navbar = document.getElementById("Navbar") as HTMLElement;
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop) {
-        Navbar.style.top = "-80px";
-      } else {
-        Navbar.style.top = "1px";
-        Navbar.style.color = "black";
-        Navbar.style.zIndex = "100";
-      }
-      lastScrollTop = scrollTop;
-    });
-  }
+  // let lastScrollTop = 0;
+  // if (typeof window !== "undefined") {
+  //   window.addEventListener("scroll", function () {
+  //     const Navbar = document.getElementById("Navbar") as HTMLElement;
+  //     const scrollTop =
+  //       window.pageYOffset || document.documentElement.scrollTop;
+  //     if (scrollTop > lastScrollTop) {
+  //       Navbar.style.top = "-80px";
+  //     } else {
+  //       Navbar.style.top = "1px";
+  //       Navbar.style.color = "black";
+  //       Navbar.style.zIndex = "100";
+  //     }
+  //     lastScrollTop = scrollTop;
+  //   });
+  // }
   return (
     <div
       className="fixed top-0 w-full bg-head text-white sticky top-0 z-[50] bg-black px-4 sm:px-8 z-0 ease-out duration-300"

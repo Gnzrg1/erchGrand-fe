@@ -26,7 +26,7 @@ export default function Index() {
         route.push("/");
       })
       .catch((err) => {
-        console.log(err), alert("Nuuts vg eswel newtreh ner taarahgui bn");
+        console.log(err), alert("Нууц үг эсвэл утасны дугаар таарахгүй байна");
       });
   };
   console.log(userData);
@@ -35,9 +35,9 @@ export default function Index() {
     <div className="bg-black">
       <Link
         href="/LandingPage"
-        className="hover:bg-slate-800 w-10 h-10 flex justify-center items-center rounded-lg"
+        className="w-10 h-10 flex justify-center items-center rounded-lg"
       >
-        <IoMdArrowBack className="text-white text-[2rem]" />
+        <IoMdArrowBack className="text-white text-[4rem]" />
       </Link>
       <div className="w-[100vw] h-[100vh] flex justify-center items-start bg-black p-4">
         <div className="w-full flex items-center flex-col gap-6">
@@ -62,8 +62,8 @@ export default function Index() {
           >
             Бүртгэл үүсгэх
           </Link>
-          <div className="flex w-full sm:2/3 md:w-2/4 lg:w-1/3 items-center justify-between text-sm-regular mb-5">
-            <div className="flex w-2/4 items-center gap-[10px]">
+          <div className=" w-full sm:2/3 md:w-2/4 lg:w-1/3 items-center  text-sm-regular mb-5">
+            {/* <div className="flex w-2/4 items-center gap-[10px]">
               <input
                 type="checkbox"
                 id="remember"
@@ -72,10 +72,10 @@ export default function Index() {
               <label className="text-text text-white" htmlFor="remember">
                 Намайг санах
               </label>
-            </div>
+            </div> */}
 
             <Link
-              className="text-color-1 w-2/4 flex justify-end text-white hover:text-color-1/70 duration-300 py-3"
+              className="text-color-1 w-4/4 flex justify-center text-white no-underline hover:underline py-3"
               href="/"
             >
               Нууц үгээ мартсан уу?
