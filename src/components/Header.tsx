@@ -27,7 +27,10 @@ function SimpleDialog(props: SimpleDialogProps) {
   const { userId, setUserId } = useContext(userIdCon);
   useEffect(() => {
     userId ? "" : setUserId(localStorage.getItem("currentUserId"));
-  }, []);
+  }, []
+  
+  
+  );
   const handleClose = () => {
     onClose(selectedValue);
   };
@@ -41,7 +44,7 @@ function SimpleDialog(props: SimpleDialogProps) {
         console.log(err);
       });
   }, []);
-  const deleteOrder = (_id) => {
+  const deleteOrder = (_id: any) => {
     console.log(_id);
 
     axios
@@ -52,7 +55,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   return (
     <Dialog onClose={handleClose} open={open}>
       <ul className="w-[500px] bg-white px-4 py-4 flex flex-col gap-4">
-        {ordVal?.map((e, index) => {
+        {ordVal?.map((e: any, index) => {
           return (
             <div key={index}>
               <li className=" flex gap-4 justify-between items-center">

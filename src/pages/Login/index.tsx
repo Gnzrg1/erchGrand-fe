@@ -47,7 +47,7 @@ export default function Index() {
             className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg block w-full sm:2/3 md:w-2/4 lg:w-1/3 p-2.5 active:border-sky-400"
             placeholder="Утасны дугаар"
             type="Phone"
-            onChange={(e) => setPhoneVal(e.target.value)}
+            onChange={(e: any) => setPhoneVal(e.target.value)}
           />
           <input
             //   onChange={(e) => setLogPassword(e.target.value)}
