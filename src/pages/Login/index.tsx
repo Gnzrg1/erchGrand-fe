@@ -20,7 +20,7 @@ export default function Index() {
         password: passVal,
       })
       .then((res) => {
-        console.log(res.data.result), alert("amjilltai newterlee");
+        console.log(res.data.result), alert("Амжилттай нэвтэрлээ");
         localStorage.setItem("currentUserId", res.data.result._id);
         setUserId(res.data.result._id);
         route.push("/");

@@ -27,14 +27,14 @@ function SimpleDialog(props: SimpleDialogProps) {
   const { userId, setUserId } = useContext(userIdCon);
   useEffect(() => {
     userId ? "" : setUserId(localStorage.getItem("currentUserId"));
-  }, []
-  
-  
-  );
+  }, []);
   const handleClose = () => {
     onClose(selectedValue);
   };
   useEffect(() => {
+    getData();
+  }, []);
+  const getData = () => {
     axios
       .post("http://localhost:8000/api/orderUser", { userId: userId })
       .then((res) => {
@@ -43,14 +43,14 @@ function SimpleDialog(props: SimpleDialogProps) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  };
   const deleteOrder = (_id: any) => {
     console.log(_id);
-
     axios
-      .delete(`http://localhost:8000/api//order/${_id}`)
-      .then((res) => alert("Amjilttai ustgalaa"))
+      .delete(`http://localhost:8000/api/order/${_id}`)
+      .then((res) => console.log("Amjilttai ustgalaa"))
       .catch((err) => console.log(err));
+    getData();
   };
   return (
     <Dialog onClose={handleClose} open={open}>
@@ -63,7 +63,7 @@ function SimpleDialog(props: SimpleDialogProps) {
                 <div>{e.date}</div>
                 <div>{e.time}</div>
                 <button
-                  onClick={(e: any) => deleteOrder(e?._id)}
+                  onClick={() => deleteOrder(e?._id)}
                   className="rounded-lg bg-red-500 w-[60px] h-[30px] text-white"
                 >
                   Устгах
