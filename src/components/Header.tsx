@@ -93,7 +93,7 @@ export const Header = () => {
     setOpen(true);
   };
 
-  const handleClose = (value: string) => {
+  const handleClose = () => {
     setOpen(false);
   };
   const [ordVal2, setOrdVal2] = useState([]);
