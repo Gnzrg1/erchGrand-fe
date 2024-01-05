@@ -5,6 +5,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { userIdCon } from "@/Context/userIdContext";
+import { Utils } from "../../utils/helper";
 
 export default function Index() {
   const [phoneVal, setPhoneVal] = useState(0);
@@ -15,7 +16,7 @@ export default function Index() {
 
   const userLogin = () => {
     axios
-      .post("http://localhost:8000/api/login", {
+      .post(`${Utils.API_URL}/Login`, {
         phone: phoneVal,
         password: passVal,
       })
