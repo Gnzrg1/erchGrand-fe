@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
 import axios from "axios";
+import { Utils } from "../../utils/helper";
 
 export default function Index() {
   const [userData, setUserData] = useState({});
@@ -16,13 +17,13 @@ export default function Index() {
     };
     console.log(data);
 
-    setUserData(data)
+    setUserData(data);
     try {
       if (userData) {
         console.log(userData);
 
         axios
-          .post("http://localhost:8000/api/user", userData)
+          .post(`${Utils.API_URL}/user`, userData)
           .then((res) => {
             // console.log(res.data.result);
             if (res.data.status) {

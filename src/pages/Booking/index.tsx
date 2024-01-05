@@ -3,6 +3,7 @@ import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { Utils } from "../../utils/helper";
 export default function Booking() {
   const [orderData, setOrderData] = useState();
   const [serVal, setSerVal] = useState("");
@@ -20,7 +21,7 @@ export default function Booking() {
   useEffect(() => {
     console.log(test);
     axios
-      .post("http://localhost:8000/api/orders", {
+      .post(`${Utils.API_URL}/orders`, {
         date: dateVal,
         Mechanic: mechVal,
       })
@@ -79,7 +80,7 @@ export default function Booking() {
     if (orderData) {
       console.log(orderData);
       axios
-        .post("http://localhost:8000/api/order", orderData)
+        .post(`${Utils.API_URL}/order`, orderData)
         .then((res) => {
           console.log(res.data.result);
           alert("Амжилттай захиаллаа");

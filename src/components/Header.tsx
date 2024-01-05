@@ -14,6 +14,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { TbCalendarTime } from "react-icons/tb";
+import { Utils } from "../utils/helper";
 
 export interface SimpleDialogProps {
   open: boolean;
@@ -36,7 +37,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   }, []);
   const getData = () => {
     axios
-      .post("http://localhost:8000/api/orderUser", { userId: userId })
+      .post(`${Utils.API_URL}/orderUser`, { userId: userId })
       .then((res) => {
         setOrdVal(res.data.result);
       })
@@ -47,7 +48,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   const deleteOrder = (_id: any) => {
     console.log(_id);
     axios
-      .delete(`http://localhost:8000/api/order/${_id}`)
+      .delete(`${Utils.API_URL}/order/${_id}`)
       .then((res) => console.log("Amjilttai ustgalaa"))
       .catch((err) => console.log(err));
     getData();

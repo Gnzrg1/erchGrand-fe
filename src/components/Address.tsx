@@ -2,13 +2,13 @@ import Link from "next/link";
 import React, { useState, useContext } from "react";
 import { FiFacebook, FiMapPin } from "react-icons/fi";
 import axios from "axios";
-import { log } from "util";
+import { Utils } from "../utils/helper";
 
 export default function Address() {
   const [comm, setComm] = useState("");
   const postCom = () => {
     axios
-      .post("http://localhost:8000/api/comment", {
+      .post(`${Utils.API_URL}/comment`, {
         userId: localStorage.getItem("currentUserId"),
         comment: comm,
       })

@@ -4,6 +4,7 @@ import { userIdCon } from "@/Context/userIdContext";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
 import Dialog from "@mui/material/Dialog";
+import { Utils } from "../../utils/helper";
 
 export interface SimpleDialogProps {
   open: boolean;
@@ -25,7 +26,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   const getData = () => {
     if (userId) {
       axios
-        .get(`http://localhost:8000/api/user/${userId}`)
+        .get(`${Utils.API_URL}/user/${userId}`)
         .then((res) => {
           setUser(res.data.result[0]);
         })
@@ -48,7 +49,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   };
   const handleSave = () => {
     axios
-      .put(`http://localhost:8000/api/user/${userId}`, person)
+      .put(`${Utils.API_URL}/user/${userId}`, person)
       .then((res) => {
         console.log(res),
           alert("Amjilttai hadgallaa"),
