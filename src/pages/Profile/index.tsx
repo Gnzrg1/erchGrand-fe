@@ -142,12 +142,12 @@ export default function Profile() {
           <strong>Хувийн мэдээлэл</strong>
         </h2>
         <div className="bg-black w-[100vw] h-[100vh] flex flex-col gap-2">
-          <div className="text-white">Нэр: {user?.firstName}</div>
+          <div className="text-white">Нэр: <div className="text-white">{user?.firstName}</div></div>
           <div className="text-white">Овог: {user?.lastName}</div>
           <div className="text-white">Утас: {user?.phone}</div>
           <div className="text-white">Имайл: {user?.email}</div>
           <button
-            className="bg-slate-800 hover:bg-slate-400 w-[120px] h-[40px] flex justify-center items-center rounded-lg"
+            className="bg-slate-800 hover:bg-slate-400 w-[120px] h-[40px] flex justify-center items-center rounded-lg text-white"
             onClick={handleClickOpen}
           >
             Янзлах
