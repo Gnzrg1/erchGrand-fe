@@ -119,7 +119,7 @@ export default function Profile() {
       axios
         .get(`http://localhost:8000/api/user/${userId}`)
         .then((res) => {
-          setUser(res.data.result);
+          setUser(res.data.result[0]);
         })
         .catch((err) => {
           console.log(err);
