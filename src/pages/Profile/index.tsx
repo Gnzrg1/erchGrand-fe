@@ -130,7 +130,7 @@ export default function Profile() {
   }, []);
   console.log(user);
   return (
-    <div className="flex gap-4">
+    <div className="bg-black flex gap-4">
       <Link
         href="/LandingPage"
         className="hover:bg-slate-800 w-10 h-10 flex justify-center items-center rounded-lg"
