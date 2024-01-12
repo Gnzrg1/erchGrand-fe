@@ -130,7 +130,7 @@ export default function Profile() {
   }, []);
   console.log(user);
   return (
-    <div className="flex gap-4">
+    <div className="bg-black flex gap-4">
       <Link
         href="/LandingPage"
         className="hover:bg-slate-800 w-10 h-10 flex justify-center items-center rounded-lg"
@@ -147,7 +147,7 @@ export default function Profile() {
           <div className="text-white">Утас: {user?.phone}</div>
           <div className="text-white">Имайл: {user?.email}</div>
           <button
-            className="bg-slate-800 hover:bg-slate-400 w-[120px] h-[40px] flex justify-center items-center rounded-lg"
+            className="bg-slate-800 hover:bg-slate-400 w-[120px] h-[40px] flex justify-center items-center rounded-lg text-white"
             onClick={handleClickOpen}
           >
             Янзлах
