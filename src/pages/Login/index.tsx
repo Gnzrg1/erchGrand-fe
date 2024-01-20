@@ -24,7 +24,6 @@ export default function Index() {
         console.log(res.data.result), alert("Амжилттай нэвтэрлээ");
         localStorage.setItem("currentUserId", res.data.result._id);
         setUserId(res.data.result._id);
-        route.push("/");
       })
       .catch((err) => {
         console.log(err), alert("Нууц үг эсвэл утасны дугаар таарахгүй байна");
@@ -38,20 +37,19 @@ export default function Index() {
         href="/LandingPage"
         className="w-10 h-10 flex justify-center items-center rounded-lg"
       >
+        {/* 14645, 9050.30 */}
         <IoMdArrowBack className="text-white text-[4rem]" />
       </Link>
       <div className="w-[100vw] h-[100vh] flex justify-center items-start bg-black p-4">
         <div className="w-full flex items-center flex-col gap-6">
           <h1 className="text-3xl text-white">Нэвтрэх</h1>
           <input
-            //   onChange={(e) => setLogEmail(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg block w-full sm:2/3 md:w-2/4 lg:w-1/3 p-2.5 active:border-sky-400"
             placeholder="Утасны дугаар"
             type="Phone"
             onChange={(e: any) => setPhoneVal(e.target.value)}
           />
           <input
-            //   onChange={(e) => setLogPassword(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg block w-full sm:2/3 md:w-2/4 lg:w-1/3 p-2.5 active:border-sky-400"
             placeholder="Нууц үг"
             type="password"
@@ -64,17 +62,6 @@ export default function Index() {
             Бүртгэл үүсгэх
           </Link>
           <div className=" w-full sm:2/3 md:w-2/4 lg:w-1/3 items-center  text-sm-regular mb-5">
-            {/* <div className="flex w-2/4 items-center gap-[10px]">
-              <input
-                type="checkbox"
-                id="remember"
-                className="w-[15px] h-[15px] hover:cursor-pointer border-2 border-icon"
-              />
-              <label className="text-text text-white" htmlFor="remember">
-                Намайг санах
-              </label>
-            </div> */}
-
             <Link
               className="text-color-1 w-4/4 flex justify-center text-white no-underline hover:underline py-3"
               href="/"

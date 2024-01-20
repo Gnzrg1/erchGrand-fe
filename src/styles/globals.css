@@ -29,11 +29,12 @@ body {
   color: pink;
 }
 #newsSection {
-  background-image: url("../imgs/mq7-original-aspect-PhotoRoom.png-PhotoRoom.png");
+  background-image: url("../imgs/erchh2.jpg");
   height: 80vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 20px;
 }
 #balance {
   background-image: url("https://i0.wp.com/gomechanic.in/blog/wp-content/uploads/2020/06/Steel-Wheel-Balancing.jpg?resize=1000%2C671&ssl=1");
@@ -48,13 +49,13 @@ body {
   border-radius: 20px;
 }
 #wheel-alignment{
-  background-image: url("https://st2.depositphotos.com/1000291/6057/i/950/depositphotos_60576009-stock-photo-car-wheel-alignment-service-work.jpg");
+  background-image: url("../imgs/tenhlgtohrgo.jpg");
   background-size: cover;
   background-position: right;
   border-radius: 20px;
 }
 #smart-diagnosis{
-  background-image: url("https://media.istockphoto.com/id/1164677212/photo/car-diagnostics-in-a-repair-shop.jpg?s=612x612&w=0&k=20&c=uP6jwkuNehDvjHY2f1Ss0BbFzHUPtfADFTbdk0ggixQ=");
+  background-image: url("../imgs/onoshlgo.jpg");
   background-size: cover;
   background-position: center;
   border-radius: 20px;
