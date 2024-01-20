@@ -71,7 +71,7 @@ export default function Index() {
           </div>
 
           <button
-            onClick={() => userLogin()}
+            onClick={userLogin}
             className="text-white w-40 h-10 outline outline-offset-2 outline-white rounded px-3 hover:text-slate-300 hover:outline-slate-300"
           >
             Hэвтрэх
