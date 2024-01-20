@@ -74,7 +74,13 @@ export const Section2 = () => {
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <Typography sx={{ p: 1 }} className="opacity-70 bg-slate-200">then</Typography>
+        <Typography sx={{ p: 1 }} className="opacity-70 bg-slate-200">
+          <div>Жижиг оврын машин: 44,000</div>
+          <div>Дунд оврын машин: 55,000</div>
+          <div>Том оврын машин: 66,000</div>
+          <div>Автобус: 77,000</div>
+          <a href="https://www.facebook.com/erchgrandautoservice/videos/1447901032636631">Дэлгэрэнгүй</a>
+        </Typography>
       </Popover>
         </div>
       </div>
