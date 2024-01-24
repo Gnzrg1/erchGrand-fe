@@ -49,7 +49,7 @@ function SimpleDialog(props: SimpleDialogProps) {
     console.log(_id);
     axios
       .delete(`${Utils.API_URL}/order/${_id}`)
-      .then((res) => console.log("Amjilttai ustgalaa"))
+      .then((res: any) => alert("Амжилттай устгалаа"))
       .catch((err) => console.log(err));
     getData();
   };
