@@ -24,6 +24,7 @@ export default function Index() {
         console.log(res.data.result), alert("Амжилттай нэвтэрлээ");
         localStorage.setItem("currentUserId", res.data.result._id);
         setUserId(res.data.result._id);
+        route.push("/");
       })
       .catch((err) => {
         console.log(err), alert("Нууц үг эсвэл утасны дугаар таарахгүй байна");

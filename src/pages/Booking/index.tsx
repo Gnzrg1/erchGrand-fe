@@ -76,11 +76,10 @@ export default function Booking() {
       userId: localStorage.getItem("currentUserId"),
     };
 
-    setOrderData(data);
-    if (orderData) {
-      console.log(orderData);
+    if (data) {
+      console.log(data);
       axios
-        .post(`${Utils.API_URL}/order`, orderData)
+        .post(`${Utils.API_URL}/order`, data)
         .then((res) => {
           console.log(res.data.result);
           alert("Амжилттай захиаллаа");

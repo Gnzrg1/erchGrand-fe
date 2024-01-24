@@ -3,9 +3,11 @@ import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
 import axios from "axios";
 import { Utils } from "../../utils/helper";
+import { useRouter } from "next/router";
 
 export default function Index() {
   const [userData, setUserData] = useState({});
+  const route = useRouter();
   const registerUser = async (event: any) => {
     event.preventDefault();
     const data = {
@@ -14,23 +16,18 @@ export default function Index() {
       email: event.target.email.value,
       phone: event.target.phoneNumber.value,
       password: event.target.password.value,
+      isMember: false,
     };
-    console.log(data);
-
-    setUserData(data);
     try {
       if (userData) {
-        console.log(userData);
-
         axios
-          .post(`${Utils.API_URL}/user`, userData)
+          .post(`${Utils.API_URL}/user`, data)
           .then((res) => {
-            // console.log(res.data.result);
             if (res.data.status) {
-              // console.log(res.data.result);
-              alert("Amjilttai bvrtgelee");
+              alert("Амжилттай бүртгэлээ");
+              route.push("/Login");
             } else {
-              alert("Medeellee bvren bugluuuc!!!!");
+              alert("Мэдээллээ бүрэн бөглөнө үү");
             }
           })
           .catch((err) => {
