@@ -70,7 +70,7 @@ export default function Booking() {
       work: event.target.services.value,
       Mechanic: mechVal,
       time: event.target.time.value,
-      Phone: 80000000,
+      Phone: event.target.phoneNumber.value,
       carModel: event.target.carModel.value,
       carNum: event.target.carNum.value,
       userId: localStorage.getItem("currentUserId"),
@@ -210,9 +210,20 @@ export default function Booking() {
                   </select>
                 </div>
               </div>
-                
               <div className="flex flex-col md:flex-row justify-between gap-4">
-              <div className="w-full md:w-2/4">
+                <div className="w-full md:w-2/4">
+                  <label className="block mb-2 text-lg-medium text-white">
+                    Утасны дугаар
+                  </label>
+                  <input
+                    name="phoneNumber"
+                    type="number"
+                    id="phone"
+                    className="text-black border border-border-2 w-full py-[12px] px-[22px] rounded-lg focus:outline-none focus:ring-2 focus:ring-color-1 text-text text-black text-md-regular"
+                    placeholder="Утасны дугаар"
+                  />
+                </div>
+                <div className="w-full md:w-2/4">
                   <label className="block mb-2 text-lg-medium text-white">
                     Машины марк
                   </label>
@@ -224,6 +235,8 @@ export default function Booking() {
                     placeholder="Машины марк"
                   />
                 </div>
+              </div>
+              <div className="flex flex-col md:flex-row justify-between gap-4">
                 <div className="w-full md:w-2/4">
                   <label
                     className="block mb-2 text-lg-medium text-white"
