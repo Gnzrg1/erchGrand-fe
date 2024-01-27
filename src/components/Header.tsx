@@ -64,7 +64,7 @@ function SimpleDialog(props: SimpleDialogProps) {
                 <div>{e.date}</div>
                 <div>{e.time}</div>
                 <button
-                  onClick={() => deleteOrder(e?._id)}
+                  onClick={() => deleteOrder(e._id)}
                   className="rounded-lg bg-red-500 w-[60px] h-[30px] text-white"
                 >
                   Устгах
