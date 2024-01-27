@@ -1,6 +1,7 @@
 import { Typography, Popover } from "@mui/material";
 import React from "react";
 import { useState } from "react";
+import Link from "next/link";
 
 export const Section2 = () => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
@@ -79,7 +80,7 @@ export const Section2 = () => {
           <div>Дунд оврын машин: 55,000</div>
           <div>Том оврын машин: 66,000</div>
           <div>Автобус: 77,000</div>
-          <a href="https://www.facebook.com/erchgrandautoservice/videos/1447901032636631">Дэлгэрэнгүй</a>
+          <Link href="https://www.facebook.com/erchgrandautoservice/videos/1447901032636631">Дэлгэрэнгүй</Link>
         </Typography>
       </Popover>
         </div>
@@ -117,7 +118,7 @@ export const Section2 = () => {
           aria-owns={open2 ? 'mouse-over-popover' : undefined}
           aria-haspopup="true"
           onMouseEnter={handlePopoverOpen2}
-          onMouseLeave={handlePopoverClose2}>Компьютер оношлогоо</Typography>
+          onMouseLeave={handlePopoverClose2}>CRDI оношлогоо</Typography>
            <Popover
         id="mouse-over-popover"
         sx={{
