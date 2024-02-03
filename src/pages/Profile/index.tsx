@@ -17,7 +17,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
   const [user, setUser] = useState<any>();
   const [userId, setUserId] = useState<any>(
-    localStorage.getItem("currentUserId")
+    localStorage.getItem("currentUserId") || ""
   );
   const route = useRouter();
   const handleClose = () => {
@@ -105,7 +105,7 @@ function SimpleDialog(props: SimpleDialogProps) {
 export default function Profile() {
   const [open, setOpen] = useState(false);
   const [userId, setUserId] = useState<any>(
-    localStorage.getItem("currentUserId")
+    localStorage.getItem("currentUserId") || ""
   );
   const [user, setUser] = useState<any>();
   const handleClickOpen = () => {
