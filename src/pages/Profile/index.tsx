@@ -4,6 +4,7 @@ import { userIdCon } from "@/Context/userIdContext";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
 import Dialog from "@mui/material/Dialog";
+import { useRouter } from "next/router";
 import { Utils } from "../../utils/helper";
 
 export interface SimpleDialogProps {
@@ -14,9 +15,9 @@ export interface SimpleDialogProps {
 
 function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
-  const [ordVal, setOrdVal] = useState([]);
   const [user, setUser] = useState<any>();
   const { userId, setUserId } = useContext(userIdCon);
+  const route = useRouter();
   const handleClose = () => {
     onClose(selectedValue);
   };
@@ -24,18 +25,14 @@ function SimpleDialog(props: SimpleDialogProps) {
     getData();
   }, []);
   const getData = () => {
-    if (userId) {
-      axios
-        .get(`${Utils.API_URL}/user/${userId}`)
-        .then((res) => {
-          setUser(res.data.result[0]);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      console.log("Uaswe");
-    }
+    axios
+      .get(`${Utils.API_URL}/user/${userId}`)
+      .then((res) => {
+        setUser(res.data.result[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   const [firstName1, setFirstName1] = useState();
   const [lastName1, setLastName1] = useState();
@@ -50,11 +47,8 @@ function SimpleDialog(props: SimpleDialogProps) {
   const handleSave = () => {
     axios
       .put(`${Utils.API_URL}/user/${userId}`, person)
-      .then((res) => {
-        console.log(res),
-          alert("Amjilttai hadgallaa"),
-          getData(),
-          handleClose();
+      .then(() => {
+        alert("Amjilttai hadgallaa"), route.push("/"), handleClose();
       })
       .catch((err) => {
         console.log(err);
@@ -114,21 +108,19 @@ export default function Profile() {
   const handleClose = (value: string) => {
     setOpen(false);
   };
+  const getData = () => {
+    axios
+      .get(`${Utils.API_URL}/user/${userId}`)
+      .then((res) => {
+        setUser(res.data.result[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   useEffect(() => {
-    if (userId) {
-      axios
-        .get(`http://localhost:8000/api/user/${userId}`)
-        .then((res) => {
-          setUser(res.data.result[0]);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      console.log("Uaswe");
-    }
+    getData();
   }, []);
-  console.log(user);
   return (
     <div className="bg-black flex gap-4">
       <Link
@@ -137,7 +129,7 @@ export default function Profile() {
       >
         <IoMdArrowBack className="text-white text-[2rem]" />
       </Link>
-      <div>
+      <div className="flex flex-col justify-center">
         <h2 className="text-white italic" style={{ fontSize: "40px" }}>
           <strong>Хувийн мэдээлэл</strong>
         </h2>
