@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { userIdCon } from "@/Context/userIdContext";
+// import { userIdCon } from "@/Context/userIdContext";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
 import Dialog from "@mui/material/Dialog";
@@ -16,14 +16,19 @@ export interface SimpleDialogProps {
 function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
   const [user, setUser] = useState<any>();
-  const { userId, setUserId } = useContext(userIdCon);
+  const [userId, setUserId] = useState<any>(
+    localStorage.getItem("currentUserId")
+  );
   const route = useRouter();
   const handleClose = () => {
     onClose(selectedValue);
   };
   useEffect(() => {
     getData();
+    // setUserId(localStorage.getItem("currentUserId"));
   }, []);
+  // console.log(userId);
+
   const getData = () => {
     axios
       .get(`${Utils.API_URL}/user/${userId}`)
@@ -48,7 +53,7 @@ function SimpleDialog(props: SimpleDialogProps) {
     axios
       .put(`${Utils.API_URL}/user/${userId}`, person)
       .then(() => {
-        alert("Amjilttai hadgallaa"), route.push("/"), handleClose();
+        alert("Амжилттай хадгаллаа"), route.push("/"), handleClose();
       })
       .catch((err) => {
         console.log(err);
@@ -99,7 +104,9 @@ function SimpleDialog(props: SimpleDialogProps) {
 }
 export default function Profile() {
   const [open, setOpen] = useState(false);
-  const { userId, setUserId } = useContext(userIdCon);
+  const [userId, setUserId] = useState<any>(
+    localStorage.getItem("currentUserId")
+  );
   const [user, setUser] = useState<any>();
   const handleClickOpen = () => {
     setOpen(true);
@@ -120,6 +127,7 @@ export default function Profile() {
   };
   useEffect(() => {
     getData();
+    // setUserId(localStorage.getItem("currentUserId"));
   }, []);
   return (
     <div className="bg-black flex gap-4">
