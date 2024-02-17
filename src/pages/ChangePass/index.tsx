@@ -26,9 +26,6 @@ export default function Index() {
   }
   const Route = () => {
     if (setPhoneVal == setPhone1Val){
-      <Link href="/ChangePass">
-        
-      </Link>
     }
   }
   return (
