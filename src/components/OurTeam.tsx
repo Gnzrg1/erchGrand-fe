@@ -38,6 +38,7 @@ export const OurTeam = () => {
             </p>
           </div>
         </div>
+        <div>
         <div className="w-full flex justify-center flex-col">
           <div
             id="ourTeam2"
@@ -71,6 +72,7 @@ export const OurTeam = () => {
               Инженер
             </p>
           </div>
+        </div>
         </div>
       </div>
     </div>

@@ -65,7 +65,7 @@ export default function Index() {
           <div className=" w-full sm:2/3 md:w-2/4 lg:w-1/3 items-center  text-sm-regular mb-5">
             <Link
               className="text-color-1 w-4/4 flex justify-center text-white no-underline hover:underline py-3"
-              href="/"
+              href="/ChangePass"
             >
               Нууц үгээ мартсан уу?
             </Link>
