@@ -15,6 +15,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { TbCalendarTime } from "react-icons/tb";
 import { Utils } from "../utils/helper";
+import { useRouter } from "next/router";
 
 export interface SimpleDialogProps {
   open: boolean;
@@ -26,6 +27,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
   const [ordVal, setOrdVal] = useState([]);
   const { userId, setUserId } = useContext(userIdCon);
+  const route = useRouter();
   useEffect(() => {
     userId ? "" : setUserId(localStorage.getItem("currentUserId"));
   }, []);
@@ -46,12 +48,10 @@ function SimpleDialog(props: SimpleDialogProps) {
       });
   };
   const deleteOrder = (_id: any) => {
-    console.log(_id);
     axios
       .delete(`${Utils.API_URL}/order/${_id}`)
       .then((res: any) => alert("Амжилттай устгалаа"))
       .catch((err) => console.log(err));
-    getData();
   };
   return (
     <Dialog onClose={handleClose} open={open}>
@@ -100,7 +100,8 @@ export const Header = () => {
   const [ordVal2, setOrdVal2] = useState([]);
   const { userId, setUserId } = useContext(userIdCon);
   useEffect(() => {
-    userId ? "" : setUserId(localStorage.getItem("currentUserId"));
+    userId;
+    // ? "" : setUserId(localStorage.getItem("currentUserId"));
   }, []);
   useEffect(() => {
     axios
