@@ -5,7 +5,8 @@ import { userIdCon } from "@/Context/userIdContext";
 import { Layout } from "@/components/Layout";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useState<any>("");
+  setUserId(localStorage.getItem("currentUserId"));
   return (
     <userIdCon.Provider value={{ userId, setUserId }}>
       <Layout>

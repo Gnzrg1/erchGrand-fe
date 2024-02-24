@@ -28,9 +28,9 @@ function SimpleDialog(props: SimpleDialogProps) {
   const [ordVal, setOrdVal] = useState([]);
   const { userId, setUserId } = useContext(userIdCon);
   const route = useRouter();
-  useEffect(() => {
-    userId ? "" : setUserId(localStorage.getItem("currentUserId"));
-  }, []);
+  // useEffect(() => {
+  //   userId ? "" : setUserId(localStorage.getItem("currentUserId"));
+  // }, []);
   const handleClose = () => {
     onClose(selectedValue);
   };
@@ -50,7 +50,12 @@ function SimpleDialog(props: SimpleDialogProps) {
   const deleteOrder = (_id: any) => {
     axios
       .delete(`${Utils.API_URL}/order/${_id}`)
-      .then((res: any) => alert("Амжилттай устгалаа"), handleClose)
+      .then(
+        (res: any) => alert("Амжилттай устгалаа"),
+        () => {
+          handleClose;
+        }
+      )
       .catch((err) => console.log(err));
   };
   return (
@@ -221,7 +226,7 @@ export const Header = () => {
                 <MenuItem onClick={handleClose1}>
                   <button
                     onClick={() => {
-                      localStorage.removeItem("currentUserId"), setUserId("");
+                      setUserId(localStorage.removeItem("currentUserId"));
                     }}
                     className="flex justify-between items-center text-black gap-2"
                   >
