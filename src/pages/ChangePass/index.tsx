@@ -10,24 +10,24 @@ import { Utils } from "../../utils/helper";
 export default function Index() {
   const [phoneVal, setPhoneVal] = useState(0);
   const [phone1Val, setPhone1Val] = useState(0);
-  const { setUserId } = useContext(userIdCon);
+  const { userId, setUserId } = useContext(userIdCon);
   const route = useRouter();
-  
+
   if (phoneVal) {
-    axios.get(`${Utils.API_URL}`)
-         .then((res) => {
-            console.log(res.data.status);
-            setPhoneVal(res.data.phone)
-         })
-         .catch((err) =>{
-            console.log(err);
-            
-         })
+    axios
+      .get(`${Utils.API_URL}`)
+      .then((res) => {
+        console.log(res.data.status);
+        setPhoneVal(res.data.phone);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   const Route = () => {
-    if (setPhoneVal == setPhone1Val){
+    if (setPhoneVal == setPhone1Val) {
     }
-  }
+  };
   return (
     <div className="bg-black">
       <Link
@@ -46,9 +46,7 @@ export default function Index() {
             type="Phone"
             onChange={(e: any) => setPhone1Val(e.target.value)}
           />
-          <button
-            className="text-white w-40 h-10 outline outline-offset-2 outline-white rounded px-3 hover:text-slate-300 hover:outline-slate-300"
-          >
+          <button className="text-white w-40 h-10 outline outline-offset-2 outline-white rounded px-3 hover:text-slate-300 hover:outline-slate-300">
             Үргэлжлүүлэх
           </button>
         </div>

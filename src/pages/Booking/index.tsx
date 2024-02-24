@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { IoMdArrowBack } from "react-icons/io";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { Utils } from "../../utils/helper";
+import { userIdCon } from "@/Context/userIdContext";
+
 export default function Booking() {
   const [orderData, setOrderData] = useState();
   const [serVal, setSerVal] = useState("");
@@ -12,6 +14,7 @@ export default function Booking() {
   const [dateVal, setDateVal] = useState("");
   const [test, setTest] = useState(false);
   const route = useRouter();
+  const { userId, setUserId } = useContext(userIdCon);
 
   useEffect(() => {
     if (dateVal != "" && mechVal != "") {
@@ -73,7 +76,7 @@ export default function Booking() {
       Phone: event.target.phoneNumber.value,
       carModel: event.target.carModel.value,
       carNum: event.target.carNum.value,
-      userId: localStorage.getItem("currentUserId"),
+      userId: userId,
     };
 
     if (data) {
