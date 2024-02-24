@@ -50,7 +50,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   const deleteOrder = (_id: any) => {
     axios
       .delete(`${Utils.API_URL}/order/${_id}`)
-      .then((res: any) => alert("Амжилттай устгалаа"))
+      .then((res: any) => alert("Амжилттай устгалаа"), handleClose)
       .catch((err) => console.log(err));
   };
   return (

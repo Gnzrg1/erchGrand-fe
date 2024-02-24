@@ -76,11 +76,7 @@ export const Section2 = () => {
         disableRestoreFocus
       >
         <Typography sx={{ p: 1 }} className="opacity-70 bg-slate-200">
-          <div>Жижиг оврын машин: 44,000</div>
-          <div>Дунд оврын машин: 55,000</div>
-          <div>Том оврын машин: 66,000</div>
-          <div>Автобус: 77,000</div>
-          <Link href="https://www.facebook.com/erchgrandautoservice/videos/1447901032636631">Дэлгэрэнгүй</Link>
+          <div>Үнэ: 44,000-77,000</div>
         </Typography>
       </Popover>
         </div>
@@ -109,7 +105,7 @@ export const Section2 = () => {
         onClose={handlePopoverClose1}
         disableRestoreFocus
       >
-        <Typography sx={{ p: 1 }} className="opacity-70 bg-slate-200">smart</Typography>
+        <Typography sx={{ p: 1 }} className="opacity-70 bg-slate-200">Үнэ: 44,000-55,000</Typography>
       </Popover>
       </div>
       <div className="w-full h-[60vh] lg:w-1/3 flex flex-col gap-12">
@@ -137,7 +133,7 @@ export const Section2 = () => {
         onClose={handlePopoverClose2}
         disableRestoreFocus
       >
-        <Typography sx={{ p: 1 }} className="opacity-70 bg-slate-200">computer</Typography>
+        <Typography sx={{ p: 1 }} className="opacity-70 bg-slate-200">Үнэ: +22,000</Typography>
       </Popover>
         </div>
         <div className="w-full h-2/4 flex justify-start items-end px-4 py-4" id="balance">
@@ -164,7 +160,7 @@ export const Section2 = () => {
         onClose={handlePopoverClose3}
         disableRestoreFocus
       >
-        <Typography sx={{ p: 1 }} className="opacity-70 bg-slate-200">balance</Typography>
+        <Typography sx={{ p: 1 }} className="opacity-70 bg-slate-200">Үнэ: 25,000-40,000</Typography>
       </Popover>
         </div>
       </div>
