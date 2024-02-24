@@ -22,7 +22,7 @@ export default function Index() {
       })
       .then((res) => {
         console.log(res.data.result), alert("Амжилттай нэвтэрлээ");
-        localStorage.setItem("currentUserId", res.data.result._id);
+        // localStorage.setItem("currentUserId", res.data.result._id);
         setUserId(res.data.result._id);
         route.push("/");
       })
