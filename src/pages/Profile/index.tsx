@@ -6,6 +6,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import Dialog from "@mui/material/Dialog";
 import { useRouter } from "next/router";
 import { Utils } from "../../utils/helper";
+import { userIdCon } from "@/Context/userIdContext";
 
 export interface SimpleDialogProps {
   open: boolean;
@@ -16,9 +17,7 @@ export interface SimpleDialogProps {
 function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
   const [user, setUser] = useState<any>();
-  const [userId, setUserId] = useState<any>(
-    localStorage.getItem("currentUserId") || ""
-  );
+  const { userId, setUserId } = useContext(userIdCon);
   const route = useRouter();
   const handleClose = () => {
     onClose(selectedValue);
@@ -104,9 +103,7 @@ function SimpleDialog(props: SimpleDialogProps) {
 }
 export default function Profile() {
   const [open, setOpen] = useState(false);
-  const [userId, setUserId] = useState<any>(
-    localStorage.getItem("currentUserId") || ""
-  );
+  const { userId, setUserId } = useContext(userIdCon);
   const [user, setUser] = useState<any>();
   const handleClickOpen = () => {
     setOpen(true);
