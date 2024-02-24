@@ -127,18 +127,18 @@ export default function Profile() {
     // setUserId(localStorage.getItem("currentUserId"));
   }, []);
   return (
-    <div className="bg-black flex gap-4">
+    <div className="bg-black flex gap-4 w-full">
       <Link
         href="/LandingPage"
-        className="hover:bg-slate-800 w-10 h-10 flex justify-center items-center rounded-lg"
+        className="hover:bg-slate-800 w-10 h-10 flex items-center rounded-lg"
       >
         <IoMdArrowBack className="text-white text-[2rem]" />
       </Link>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col items-center w-full pt-20">
         <h2 className="text-white italic" style={{ fontSize: "40px" }}>
           <strong>Хувийн мэдээлэл</strong>
         </h2>
-        <div className="bg-black w-[100vw] h-[100vh] flex flex-col gap-2">
+        <div className="flex flex-col gap-2" style={{fontSize: "20px"}}>
           <div className="text-white">Нэр: {user?.firstName}</div>
           <div className="text-white">Овог: {user?.lastName}</div>
           <div className="text-white">Утас: {user?.phone}</div>
