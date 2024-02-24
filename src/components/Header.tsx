@@ -226,7 +226,7 @@ export const Header = () => {
                 <MenuItem onClick={handleClose1}>
                   <button
                     onClick={() => {
-                      setUserId(localStorage.removeItem("currentUserId"));
+                      setUserId("");
                     }}
                     className="flex justify-between items-center text-black gap-2"
                   >
