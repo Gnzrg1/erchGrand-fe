@@ -7,7 +7,7 @@ import { Utils } from "../../utils/helper";
 import { userIdCon } from "@/Context/userIdContext";
 
 export default function Booking() {
-  const [orderData, setOrderData] = useState();
+  // const [orderData, setOrderData] = useState();
   const [serVal, setSerVal] = useState("");
   const [orderVal, setOrderVal] = useState([]);
   const [mechVal, setMechVal] = useState<String>();
