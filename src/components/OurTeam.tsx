@@ -24,7 +24,7 @@ export const OurTeam = () => {
         <div className="w-full flex justify-center flex-col">
           <div
             id="ourTeam1"
-            className="px-4 py-4 flex justify-end flex-col items-start"
+            className="px-4 py-4 flex justify-end flex-col items-start pb-3"
             style={{ height: "40vh" }}
           >
             <h2 className="h-10 w-40 rounded-lg group/edit bg-white flex justify-center items-center text-black">
