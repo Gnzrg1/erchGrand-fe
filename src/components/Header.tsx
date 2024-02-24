@@ -37,7 +37,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   useEffect(() => {
     getData();
   }, []);
-  const getData = () => {
+  const getData = (): void => {
     axios
       .post(`${Utils.API_URL}/orderUser`, { userId: userId })
       .then((res) => {
@@ -50,12 +50,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   const deleteOrder = (_id: any) => {
     axios
       .delete(`${Utils.API_URL}/order/${_id}`)
-      .then(
-        (res: any) => alert("Амжилттай устгалаа"),
-        () => {
-          handleClose;
-        }
-      )
+      .then((res: any) => alert("Амжилттай устгалаа"), getData)
       .catch((err) => console.log(err));
   };
   return (
@@ -85,6 +80,8 @@ function SimpleDialog(props: SimpleDialogProps) {
   );
 }
 export const Header = () => {
+  const [ordVal2, setOrdVal2] = useState([]);
+  const { userId, setUserId } = useContext(userIdCon);
   const [open, setOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open1 = Boolean(anchorEl);
@@ -102,21 +99,19 @@ export const Header = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const [ordVal2, setOrdVal2] = useState([]);
-  const { userId, setUserId } = useContext(userIdCon);
-  useEffect(() => {
-    userId;
-    // ? "" : setUserId(localStorage.getItem("currentUserId"));
-  }, []);
-  useEffect(() => {
+
+  const getData = () => {
     axios
-      .post("http://localhost:8000/api/orderUser", { userId: userId })
+      .post(`${Utils.API_URL}/orderUser`, { userId: userId })
       .then((res) => {
         setOrdVal2(res.data.result);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+  useEffect(() => {
+    getData();
   }, []);
   // let lastScrollTop = 0;
   // if (typeof window !== "undefined") {
