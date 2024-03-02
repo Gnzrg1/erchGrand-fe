@@ -130,7 +130,7 @@ export default function Profile() {
     <div className="bg-black flex gap-4 w-full">
       <Link
         href="/LandingPage"
-        className="hover:bg-slate-800 w-10 h-10 flex items-center rounded-lg"
+        className="hover:bg-slate-800 w-10 h-10 flex justify-center items-center rounded-lg"
       >
         <IoMdArrowBack className="text-white text-[2rem]" />
       </Link>
