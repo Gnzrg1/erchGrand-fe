@@ -10,31 +10,28 @@ import { Utils } from "../../utils/helper";
 export default function Index() {
   const [phoneVal, setPhoneVal] = useState(0);
   const [phone1Val, setPhone1Val] = useState(0);
-  const { userId, setUserId } = useContext(userIdCon);
+  const [userId, setUserId] = useState();
   const route = useRouter();
 
-  if (phoneVal) {
+  const getUser = () => {
     axios
-      .get(`${Utils.API_URL}`)
+      .post(`${Utils.API_URL}/userphone`, {
+        phone: phoneVal,
+      })
       .then((res) => {
-        console.log(res.data.status);
-        setPhoneVal(res.data.phone);
+        setUserId(res.data.result._id);
       })
       .catch((err) => {
         console.log(err);
       });
-  }
-  const Route = () => {
-    if (setPhoneVal == setPhone1Val) {
-    }
   };
+
   return (
     <div className="bg-black">
       <Link
         href="/LandingPage"
         className="w-10 h-10 flex justify-center items-center rounded-lg"
       >
-        {/* 14645, 9050.30 */}
         <IoMdArrowBack className="text-white text-[4rem]" />
       </Link>
       <div className="w-[100vw] h-[100vh] flex justify-center items-start bg-black p-4">
@@ -44,9 +41,12 @@ export default function Index() {
             className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg block w-full sm:2/3 md:w-2/4 lg:w-1/3 p-2.5 active:border-sky-400"
             placeholder="Утасны дугаар"
             type="Phone"
-            onChange={(e: any) => setPhone1Val(e.target.value)}
+            onChange={(e: any) => setPhoneVal(e.target.value)}
           />
-          <button className="text-white w-40 h-10 outline outline-offset-2 outline-white rounded px-3 hover:text-slate-300 hover:outline-slate-300">
+          <button
+            onClick={getUser}
+            className="text-white w-40 h-10 outline outline-offset-2 outline-white rounded px-3 hover:text-slate-300 hover:outline-slate-300"
+          >
             Үргэлжлүүлэх
           </button>
         </div>
