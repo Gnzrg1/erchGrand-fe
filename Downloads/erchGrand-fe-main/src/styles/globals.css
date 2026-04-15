@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+#certicate{
+  color: pink;
+}
+#newsSection {
+  background-image: url("../imgs/erchh2.jpg");
+  height: 80vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 20px;
+}
+#balance {
+  background-image: url("https://i0.wp.com/gomechanic.in/blog/wp-content/uploads/2020/06/Steel-Wheel-Balancing.jpg?resize=1000%2C671&ssl=1");
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+}
+#computer-diagnosis{
+  background-image: url("../imgs/E3F932B5-ECC2-40C9-B4E3-5EEE6FC6F884.jpeg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+#wheel-alignment{
+  background-image: url("../imgs/tenhlgtohrgo.jpg");
+  background-size: cover;
+  background-position: right;
+  border-radius: 20px;
+}
+#smart-diagnosis{
+  background-image: url("../imgs/onoshlgo.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+h1 {
+  font-size: 35px;
+}
+#intro3 {
+  background-image: url("../imgs/erch.jpg");
+  background-size: cover;
+  background-position: left;
+  border-radius: 20px;
+}
+#intro2 {
+  background-image: url("../imgs/5-1\ Зураг.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+#intro1 {
+  background-image: url("../imgs/ШУДАРГА\ БАЙДЛЫН\ МЭДЭГДЭЛ\ А.Ганбат\ 2026.pdf.jpg");
+  background-size: cover;
+  background-position: top;
+  border-radius: 20px;
+}
+#ourTeam1 {
+  background-image: url("../imgs/IMG_2713.jpeg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+#ourTeam2 {
+  background-image: url("../imgs/IMG_2714.jpeg");
+ background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+#ourTeam3 {
+  background-image: url("../imgs/IMG_2675.jpeg");
+ background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+#ourTeam4 {
+  background-image: url("../imgs/IMG_2713.jpeg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+#mapPicture {
+  background-image: url("../imgs/mapPic.png");
+  background-size: cover;
+  background-position: center;
+}
