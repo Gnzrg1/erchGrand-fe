@@ -15,7 +15,7 @@ export const Introduce = () => {
         2 давхарт хүлээлгийн хэсэг кофе шоп нээж ажиллуулж эхэлсэн.</p>
       </div>
       <div className="flex flex-col lg:flex-row gap-8">
-        <div className="bg-slate-500 w-full lg:w-1/4 flex flex-col justify-center items-center" id="intro1" style={{height:"40vh", borderRadius:"20px"}}>
+        <div className="bg-slate-500 w-full lg:w-1/4 flex flex-col justify-center items-center" id="intro0" style={{height:"40vh", borderRadius:"20px"}}>
         </div>
         <div className="w-full lg:w-1/4" id="intro2" style={{height:"40vh"}}></div>
         <div className="w-full lg:w-2/4" id="intro3" style={{height:"40vh"}}></div>
